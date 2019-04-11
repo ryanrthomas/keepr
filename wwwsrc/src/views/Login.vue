@@ -1,19 +1,23 @@
 <template>
     <div class="login">
+        <!-- TESTING BUTTON. DELETE BEFORE FINAL PUSH -->
+        <router-link to="/"><button class="btn m-3 btn-primary shadow">
+          Go to home view</button></router-link>
+
         <form v-if="loginForm" @submit.prevent="loginUser">
-            <input type="email" v-model="creds.email" placeholder="email">
-            <input type="password" v-model="creds.password" placeholder="password">
-            <button type="submit">Login</button>
+            <input class="m-3" type="email" v-model="creds.email" placeholder="Email">
+            <input class="m-3" type="password" v-model="creds.password" placeholder="Password">
+            <button class="btn btn-light m-3 shadow" type="submit">Login</button>
         </form>
         <form v-else @submit.prevent="register">
-            <input type="text" v-model="newUser.username" placeholder="name">
-            <input type="email" v-model="newUser.email" placeholder="email">
-            <input type="password" v-model="newUser.password" placeholder="password">
-            <button type="submit">Create Account</button>
+            <input class="m-3" type="text" v-model="newUser.username" placeholder="Name">
+            <input class="m-3" type="email" v-model="newUser.email" placeholder="Email">
+            <input class="m-3" type="password" v-model="newUser.password" placeholder="Password">
+            <button class="btn btn-light m-1 shadow" type="submit">Create Account</button>
         </form>
         <div @click="loginForm = !loginForm">
-            <p v-if="loginForm">No account Click to Register</p>
-            <p v-else>Already have an account click to Login</p>
+            <p v-if="loginForm">Click here to sign up for an account.</p>
+            <p v-else>Already have an account? Click here to login.</p>
         </div>
     </div>
 </template>

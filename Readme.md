@@ -4,13 +4,13 @@ Keepr is a social network that allows users to visually share, and discover new 
 
 ### The Setup
 
-Keepr is a typical project where some of the basic layouts have been thought up but it's still missing some key components. The basic idea here is to allow users to post items if they are logged in. They can also browse all of the items (aka keeps) that have been posted without having to login. If any user wants to store a reference to any paticular keep they will store it in the `vault` of their choice. 
+Keepr is a typical project where some of the basic layouts have been thought up but it's still missing some key components. The basic idea here is to allow users to post items if they are logged in. They can also browse all of the items (aka keeps) that have been posted without having to log in. If any user wants to store a reference to any particular keep they will store it in the `vault` of their choice. 
 
 We want to give the users the opportunity to click on the keep icon for any post and have a list of their vaults appear. Selecting the vault should create a reference to that post and the users vault.
 
 Vaults themselves are relatively simple... They only require a name and a description and will then have a list of posts that are saved within the vault. Think about how you will handle this relationship.
 
-For example I may really like game art and thus I would be a user who creates a vault named ***Sweet Game Art*** I will then start saving the `keeps` I like into this vault.
+For example, I may really like game art and thus I would be a user who creates a vault named ***Sweet Game Art*** I will then start saving the `keeps` I like into this vault.
 
 The server you are using is a dotnet server with MySqlServer and Dapper. The user auth routes have already been created but you will be in charge of actually creating a user login/register form. 
 
@@ -20,17 +20,17 @@ To get started you are going to need to create some models and think about the n
 
 The main goal here is to get users logging in and creating public posts (keeps). Once you are creating keeps you should be able to tackle the rest of the application.
 
-Users will be allowed to create vaults where they can organize the posts of other users so they can recall the keeps they enjoy by looking at that paticular vault. 
+Users will be allowed to create vaults where they can organize the posts of other users so they can recall the keeps they enjoy by looking at that particular vault. 
 
 > Remember that a single user can have many vaults but each vault will only belong to a single user.
 Also a vault has many keeps and keeps could have many vaults but only one author or user... 
 
-Also to make things more simplistic once a keep is marked public it can no longer be deleted.
+Also to make things more simplistic, once a keep is marked public it can no longer be deleted.
 
 
 ### Step 2 - Adding the functionality
 
-Once you get to the point where users can create vaults its time to put them to work. Users need a simple way to add a paticular keep to the vault of their choice while browsing. Also to give users some credit for creating excellent keeps lets keep track of the number of times a keep has been added to any vault. We also want to keep track of the number of views each keep gets.
+Once you get to the point where users can create vaults, it's time to put them to work. Users need a simple way to add a paticular keep to the vault of their choice while browsing. Also, to give users some credit for creating excellent keeps, let's keep track of the number of times a keep has been added to any vault. We also want to keep track of the number of views each keep gets.
  
 ### Step 3 - Prettify
 What this site is already pretty if you follow the mocks :wink: Make sure the features you add are attactive.
