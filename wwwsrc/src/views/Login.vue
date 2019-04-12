@@ -5,14 +5,14 @@
                 Go to home view</button></router-link>
 
         <form v-if="loginForm" @submit.prevent="loginUser">
-            <input class="m-3" type="email" v-model="creds.email" placeholder="Email">
-            <input class="m-3" type="password" v-model="creds.password" placeholder="Password">
+            <input class="m-3" type="email" v-model="creds.email" placeholder="Email" required>
+            <input class="m-3" type="password" v-model="creds.password" placeholder="Password" required>
             <button class="btn btn-light m-3 shadow" type="submit">Login</button>
         </form>
         <form v-else @submit.prevent="register">
-            <input class="m-3" type="text" v-model="newUser.username" placeholder="Name">
-            <input class="m-3" type="email" v-model="newUser.email" placeholder="Email">
-            <input class="m-3" type="password" v-model="newUser.password" placeholder="Password">
+            <input class="m-3" type="text" v-model="newUser.username" placeholder="Name" required>
+            <input class="m-3" type="email" v-model="newUser.email" placeholder="Email" required>
+            <input class="m-3" type="password" v-model="newUser.password" placeholder="Password" required>
             <button class="btn btn-light m-1 shadow" type="submit">Create Account</button>
         </form>
         <div @click="loginForm = !loginForm">
@@ -55,5 +55,5 @@
 </script>
 
 <style>
-    
+
 </style>
