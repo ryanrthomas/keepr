@@ -2,7 +2,7 @@
     <div class="login">
         <!-- TESTING BUTTON. DELETE BEFORE FINAL PUSH -->
         <router-link to="/"><button class="btn m-3 btn-primary shadow">
-          Go to home view</button></router-link>
+                Go to home view</button></router-link>
 
         <form v-if="loginForm" @submit.prevent="loginUser">
             <input class="m-3" type="email" v-model="creds.email" placeholder="Email">
@@ -53,3 +53,7 @@
         }
     };
 </script>
+
+<style>
+    
+</style>

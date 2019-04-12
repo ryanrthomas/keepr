@@ -59,6 +59,7 @@ namespace Keepr
             services.AddMvc();
 
             services.AddTransient<IDbConnection>(x => CreateDBContext());
+            // ADD REPOSITORIES HERE!
             services.AddTransient<UserRepository>();
 
 
