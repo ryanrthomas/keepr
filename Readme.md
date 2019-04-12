@@ -30,7 +30,7 @@ Also to make things more simplistic, once a keep is marked public it can no long
 
 ### Step 2 - Adding the functionality
 
-Once you get to the point where users can create vaults, it's time to put them to work. Users need a simple way to add a paticular keep to the vault of their choice while browsing. Also, to give users some credit for creating excellent keeps, let's keep track of the number of times a keep has been added to any vault. We also want to keep track of the number of views each keep gets.
+Once you get to the point where users can create vaults, it's time to put them to work. Users need a simple way to add a particular keep to the vault of their choice while browsing. Also, to give users some credit for creating excellent keeps, let's keep track of the number of times a keep has been added to any vault. We also want to keep track of the number of views each keep gets.
  
 ### Step 3 - Prettify
 What this site is already pretty if you follow the mocks :wink: Make sure the features you add are attactive.

@@ -28,8 +28,8 @@ namespace keepr.Repositories
             try
             {
                 int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name, teamId)
-                    VALUES (@Name, @TeamId);
+                INSERT INTO keeps (name, keepId)
+                    VALUES (@Name, @KeepId);
                     SELECT LAST_INSERT_ID()
                 ", keep);
                 keep.Id = id;
@@ -49,7 +49,7 @@ namespace keepr.Repositories
                 string query = @"
                 UPDATE keeps SET
                     name = @editedKeep.Name,
-                    teamId = @editedKeep.TeamId
+                    teamId = @editedKeep.KeepId
                 WHERE id = @id
                 SELECT * FROM keeps WHERE id = @id;
                 ";

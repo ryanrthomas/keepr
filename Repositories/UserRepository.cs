@@ -15,8 +15,8 @@ namespace keepr.Repositories
         //REGISTER
         public User Register(UserRegistration creds)
         {
-            //generate the user id
-            //HASH THE PASSWORD
+            // Generate the user id
+            // HASH THE PASSWORD
             string id = Guid.NewGuid().ToString();
             string hash = BCrypt.Net.BCrypt.HashPassword(creds.Password);
             int success = _db.Execute(@"
@@ -72,13 +72,10 @@ namespace keepr.Repositories
         //DELETE   D
 
 
-
         public UserRepository(IDbConnection db)
         {
             _db = db;
         }
-
-
 
     }
 }
