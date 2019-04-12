@@ -38,7 +38,7 @@ export default new Vuex.Store({
           router.push({ name: 'home' })
         })
         .catch(e => {
-          console.log('[registration failed] :', e)
+          console.log('[Registration failed] :', e)
         })
     },
     authenticate({ commit, dispatch }) {
@@ -48,7 +48,7 @@ export default new Vuex.Store({
           router.push({ name: 'home' })
         })
         .catch(e => {
-          console.log('not authenticated')
+          console.log('Not authenticated')
         })
     },
     login({ commit, dispatch }, creds) {
@@ -58,7 +58,7 @@ export default new Vuex.Store({
           router.push({ name: 'home' })
         })
         .catch(e => {
-          console.log('Login Failed')
+          console.log('Login failed')
         })
     }
   }

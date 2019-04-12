@@ -1,5 +1,6 @@
 <template>
     <div class="login">
+
         <!-- TESTING BUTTON. DELETE BEFORE FINAL PUSH -->
         <!-- <router-link to="/"><button class="btn m-3 btn-primary shadow">
                 Go to home view</button></router-link> -->
@@ -19,14 +20,16 @@
             <p v-if="loginForm">Click here to sign up for an account.</p>
             <p v-else>Already have an account? Click here to login.</p>
         </div>
+        <!-- <keep></keep> -->
     </div>
 </template>
 
 <script>
+    // import Keep from "@/components/Keep.vue"
     export default {
         name: "login",
         mounted() {
-            //checks for valid session
+            // Checks for valid session
             this.$store.dispatch("authenticate");
         },
         data() {
@@ -50,6 +53,9 @@
             loginUser() {
                 this.$store.dispatch("login", this.creds);
             }
+        },
+        components: {
+            // Keep
         }
     };
 </script>
