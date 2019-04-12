@@ -4,57 +4,85 @@ using System.Linq;
 using System.Threading.Tasks;
 using keepr.Models;
 using keepr.Repositories;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Keepr.Controllers
+namespace keepr.Controllers
 {
-    [Route("account")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class VaultController : ControllerBase
+    public class VaultsController : ControllerBase
     {
-        private readonly VaultRepository _repo;
-        public VaultController(VaultRepository repo)
+        private readonly VaultsRepository _tr;
+        public VaultsController(VaultsRepository tr)
         {
-            _repo = repo;
+            _tr = tr;
         }
 
-        [HttpPost("Register")]
-        public async Task<User> Register([FromBody]UserRegistration creds)
+        // GET ALL
+        [HttpGet]
+        public ActionResult<IEnumerable<Vault>> Get()
         {
-            User user = _repo.Register(creds);
-            if (user == null) { BadRequest("Invalid Credentials"); }
-            user.SetClaims();
-            await HttpContext.SignInAsync(user._principal);
-            return user;
+            IEnumerable<Vault> results = _tr.GetAll();
+            if (results == null)
+            {
+                return BadRequest();
+            }
+            return Ok(results);
         }
 
-        [HttpPost("Login")]
-        public async Task<ActionResult<User>> Login([FromBody]UserLogin creds)
+        // GET BY ID
+        [HttpGet("{id}")]
+        public ActionResult<Vault> Get(int id)
         {
-            User user = _repo.Login(creds);
-            if (user == null) { Unauthorized("Invalid Credentials"); }
-            user.SetClaims();
-            await HttpContext.SignInAsync(user._principal);
-            return user;
+            Vault found = _tr.GetById(id);
+            if (found == null)
+            {
+                return BadRequest();
+            }
+            return Ok(found);
         }
 
-
-        [HttpDelete("Logout")]
-        public async Task<ActionResult<bool>> Logout()
+        // GET PLAYERS BY TEAM ID   
+        [HttpGet("{id}/players")]
+        public ActionResult<IEnumerable<Keep>> GetKeeps(int id)
         {
-            await HttpContext.SignOutAsync();
-            return Ok(true);
+            return Ok(_tr.GetKeeps(id));
         }
 
-
-        [Authorize]
-        [HttpGet("Authenticate")]
-        public ActionResult<User> Authenticate()
+        // CREATE
+        [HttpPost]
+        public ActionResult<Vault> Create([FromBody] Vault vault)
         {
-            var id = HttpContext.User.Identity.Name;
-            return Ok(_repo.GetUserById(id));
+            Vault newVault = _tr.CreateVault(vault);
+            if (newVault == null)
+            {
+                return BadRequest();
+            }
+            return CreatedAtAction("newVault", vault);
+        }
+
+        // EDIT
+        [HttpPut("{id}")]
+        public ActionResult<Vault> Edit(int id, [FromBody] Vault editedVault)
+        {
+            Vault updatedVault = _tr.EditVault(id, editedVault);
+            if (updatedVault == null)
+            {
+                return BadRequest();
+            }
+            return Ok(updatedVault);
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
+        {
+            bool successful = _tr.Delete(id);
+            if (successful)
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
     }
 }

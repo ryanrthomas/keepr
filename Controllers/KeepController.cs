@@ -4,57 +4,78 @@ using System.Linq;
 using System.Threading.Tasks;
 using keepr.Models;
 using keepr.Repositories;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Keepr.Controllers
+namespace keepr.Controllers
 {
-    [Route("account")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class KeepController : ControllerBase
+    public class KeepsController : ControllerBase
     {
-        private readonly VaultRepository _repo;
-        public KeepController(VaultRepository repo)
+        private readonly KeepsRepository _pr;
+        public KeepsController(KeepsRepository pr)
         {
-            _repo = repo;
+            _pr = pr;
         }
 
-        [HttpPost("Register")]
-        public async Task<User> Register([FromBody]UserRegistration creds)
+        // GET ALL
+        [HttpGet]
+        public ActionResult<IEnumerable<Keep>> Get()
         {
-            User user = _repo.Register(creds);
-            if (user == null) { BadRequest("Invalid Credentials"); }
-            user.SetClaims();
-            await HttpContext.SignInAsync(user._principal);
-            return user;
+            IEnumerable<Keep> results = _pr.GetAll();
+            if (results == null)
+            {
+                return BadRequest();
+            }
+            return Ok(results);
         }
 
-        [HttpPost("Login")]
-        public async Task<ActionResult<User>> Login([FromBody]UserLogin creds)
+        // GET BY ID
+        [HttpGet("{id}")]
+        public ActionResult<Keep> Get(int id)
         {
-            User user = _repo.Login(creds);
-            if (user == null) { Unauthorized("Invalid Credentials"); }
-            user.SetClaims();
-            await HttpContext.SignInAsync(user._principal);
-            return user;
+            Keep found = _pr.GetById(id);
+            if (found == null)
+            {
+                return BadRequest();
+            }
+            return Ok(found);
         }
 
-
-        [HttpDelete("Logout")]
-        public async Task<ActionResult<bool>> Logout()
+        // CREATE
+        [HttpPost]
+        public ActionResult<Keep> Create([FromBody] Keep keep)
         {
-            await HttpContext.SignOutAsync();
-            return Ok(true);
+            Keep newKeep = _pr.CreateKeep(keep);
+            if (newKeep == null)
+            {
+                return BadRequest();
+            }
+            return Ok(newKeep);
         }
 
-
-        [Authorize]
-        [HttpGet("Authenticate")]
-        public ActionResult<User> Authenticate()
+        // EDIT
+        [HttpPut("{id}")]
+        public ActionResult<Keep> Edit(int id, [FromBody] Keep editedKeep)
         {
-            var id = HttpContext.User.Identity.Name;
-            return Ok(_repo.GetUserById(id));
+            Keep updatedKeep = _pr.EditKeep(id, editedKeep);
+            if (updatedKeep == null)
+            {
+                return BadRequest();
+            }
+            return Ok(updatedKeep);
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
+        {
+            bool successful = _pr.Delete(id);
+            if (successful)
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
     }
 }
