@@ -1,8 +1,45 @@
 <template>
   <div id="app">
+    <navbar></navbar>
     <router-view />
   </div>
 </template>
+
+<script>
+    import Navbar from "@/components/Navbar.vue"
+    export default {
+        name: "login",
+        mounted() {
+            // Checks for valid session
+            this.$store.dispatch("authenticate");
+        },
+        data() {
+            return {
+                loginForm: true,
+                creds: {
+                    email: "",
+                    password: ""
+                },
+                newUser: {
+                    email: "",
+                    password: "",
+                    username: ""
+                }
+            };
+        },
+        methods: {
+            register() {
+                this.$store.dispatch("register", this.newUser);
+            },
+            loginUser() {
+                this.$store.dispatch("login", this.creds);
+            }
+        },
+        components: {
+            Navbar
+        }
+    };
+</script>
 
 <style>
   #app {

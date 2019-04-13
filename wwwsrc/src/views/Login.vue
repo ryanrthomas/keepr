@@ -1,10 +1,5 @@
 <template>
     <div class="login">
-
-        <!-- TESTING BUTTON. DELETE BEFORE FINAL PUSH -->
-        <!-- <router-link to="/"><button class="btn m-3 btn-primary shadow">
-                Go to home view</button></router-link> -->
-
         <form v-if="loginForm" @submit.prevent="loginUser">
             <input class="m-3" type="email" v-model="creds.email" placeholder="Email" required>
             <input class="m-3" type="password" v-model="creds.password" placeholder="Password" required>
@@ -20,12 +15,12 @@
             <p v-if="loginForm">Click here to sign up for an account.</p>
             <p v-else>Already have an account? Click here to login.</p>
         </div>
-        <!-- <keep></keep> -->
+        <keep></keep>
     </div>
 </template>
 
 <script>
-    // import Keep from "@/components/Keep.vue"
+    import Keep from "@/components/Keep.vue"
     export default {
         name: "login",
         mounted() {
@@ -55,11 +50,15 @@
             }
         },
         components: {
-            // Keep
+            Keep
         }
     };
 </script>
 
 <style>
-
+    .navbar {
+        background-color: black;
+        color: white;
+        height: auto;
+    }
 </style>
