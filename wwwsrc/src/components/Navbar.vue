@@ -2,9 +2,49 @@
     <div class="navbar">
         <div class="navbar">
             <h1 class="navbar">Keepr</h1>
-            <button class="btn m-2 btn-outline-primary">Sign In</button>
-            <button class="btn m-2 btn-primary">Register</button>
+            <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary"
+                @click="">Sign In</button>
+            <button type="button" data-toggle="modal" data-target="#registerModal" class="btn m-2 btn-primary"
+                @click="">Register</button>
         </div>
+        <!-- MODAL -->
+        <div id="loginModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Log In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="registerModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -19,7 +59,9 @@
         },
         computed: {},
         methods: {},
-        components: {}
+        components: {
+
+        }
     }
 </script>
 
