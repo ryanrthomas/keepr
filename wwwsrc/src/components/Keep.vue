@@ -32,10 +32,8 @@
 <style>
     .card {
         border-style: solid;
-        border-radius: 10px;
         border-width: thin;
         border-color: black;
-        box-shadow: 2px 2px 10px black;
     }
 
 </style>

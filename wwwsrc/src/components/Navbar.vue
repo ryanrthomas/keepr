@@ -2,13 +2,13 @@
     <div class="navbar">
         <div class="navbar">
             <h1 class="navbar">Keepr</h1>
-            <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary"
-                @click="">Sign In</button>
-            <button type="button" data-toggle="modal" data-target="#registerModal" class="btn m-2 btn-primary"
-                @click="">Register</button>
+            <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
+                In</button>
+            <button type="button" data-toggle="modal" data-target="#registerModal"
+                class="btn m-2 btn-primary">Register</button>
         </div>
         <!-- MODAL -->
-        <div id="loginModal" tabindex="-1" role="dialog">
+        <div id="loginModal" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -19,18 +19,15 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <input type="email" placeholder="Email" required>
-                            <input type="password" placeholder="Password" required>
-                            <button class="btn btn-secondary m-3" type="submit">Login</button>
+                            <input class="m-1" type="email" placeholder="Email" required>
+                            <input class="m-1" type="password" placeholder="Password" required><br>
+                            <button class="btn btn-primary m-1" type="submit">Log In</button>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Log In</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="registerModal" tabindex="-1" role="dialog">
+        <div id="registerModal" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -41,14 +38,11 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <input type="text" placeholder="Name" required>
-                            <input type="email" placeholder="Email" required>
-                            <input type="password" placeholder="Password" required>
-                            <button class="btn btn-secondary m-1" type="submit">Create Account</button>
+                            <input class="m-1" type="text" placeholder="Name" required>
+                            <input class="m-1" type="email" placeholder="Email" required>
+                            <input class="m-1" type="password" placeholder="Password" required><br>
+                            <button class="btn btn-primary m-1" type="submit">Create Account</button>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +60,14 @@
             return {}
         },
         computed: {},
-        methods: {},
+        methods: {
+            showLoginModal() {
+                $('#loginModal').modal()
+            },
+            showRegisterModal() {
+                $('#registerModal').modal()
+            },
+        },
         components: {
 
         }
