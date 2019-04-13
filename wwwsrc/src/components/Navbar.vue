@@ -8,7 +8,7 @@
                 class="btn m-2 btn-primary">Register</button>
         </div>
         <!-- MODAL -->
-        <div id="loginModal" class="modal fade" role="dialog">
+        <div id="loginModal" class="modal" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div id="registerModal" class="modal fade" role="dialog">
+        <div id="registerModal" class="modal" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -61,12 +61,12 @@
         },
         computed: {},
         methods: {
-            showLoginModal() {
-                $('#loginModal').modal()
-            },
-            showRegisterModal() {
-                $('#registerModal').modal()
-            },
+            // showLoginModal() {
+            //     $('#loginModal').modal()
+            // },
+            // showRegisterModal() {
+            //     $('#registerModal').modal()
+            // },
         },
         components: {
 

@@ -61,8 +61,12 @@ use ryankeepr;
 --         ON DELETE CASCADE
 -- )
 
-
 -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
 -- SELECT * FROM vaultkeeps vk
 -- INNER JOIN keeps k ON k.id = vk.keepId 
 -- WHERE (vaultId = @vaultId AND vk.userId = @userId) 
+
+-- -- PRACTICE INSERTING FAKE DATA HERES
+-- INSERT INTO keeps (name) VALUES ("test keep 1")
+-- INSERT INTO keeps (name) VALUES ("test keep 2")
+INSERT INTO keeps (name) VALUES ("test keep 2")
