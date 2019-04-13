@@ -1,12 +1,13 @@
 <template>
-    <div class="keep">
+    <div class="keep m-3">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="" alt="Card image cap">
+            <img class="card-img-top" src="https://placehold.it/300x200" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> 0&nbsp<i class="fas fa-eye"></i> 0</p>
+                <h5 class="card-title">(Title of keep)</h5>
+                <button class="btn btn-danger m-1"><b>K</b></button>
+                <button class="btn btn-warning m-1"><i class="fas fa-share"></i></button>
+                <button class="btn btn-primary m-1"><i class="fas fa-eye"></i></button>
             </div>
         </div>
     </div>
@@ -29,5 +30,12 @@
 
 
 <style>
+    .card {
+        border-style: solid;
+        border-radius: 10px;
+        border-width: thin;
+        border-color: black;
+        box-shadow: 2px 2px 10px black;
+    }
 
 </style>
