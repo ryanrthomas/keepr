@@ -5,6 +5,7 @@
             In</button>
         <button type="button" data-toggle="modal" data-target="#registerModal"
             class="btn m-2 btn-primary">Register</button>
+        <button @click="logout" type="button" class="btn m-2 btn-warning">Sign Out</button>
         <!-- MODAL -->
         <div id="loginModal" class="modal" role="dialog">
             <div class="modal-dialog" role="document">
@@ -64,7 +65,10 @@
             // },
             // showRegisterModal() {
             //     $('#registerModal').modal()
-            // },
+            // }, 
+            logout() {
+                this.$store.dispatch("logout", this.user)
+            }
         },
         components: {
 
