@@ -42,7 +42,7 @@ namespace keepr.Repositories
 
         }
 
-        public Keep EditKeep(int id, Keep editedKeep)
+        public Keep EditKeep(int id, Keep editedKeep, string userId)
         {
             try
             {
@@ -51,9 +51,9 @@ namespace keepr.Repositories
                     name = @editedKeep.Name,
                     teamId = @editedKeep.KeepId
                 WHERE id = @id
-                SELECT * FROM keeps WHERE id = @id;
+                SELECT * FROM keeps WHERE id = @id AND userId = @userId;
                 ";
-                return _db.QueryFirstOrDefault<Keep>(query, new { id, editedKeep });
+                return _db.QueryFirstOrDefault<Keep>(query, new { id, editedKeep, userId });
             }
             catch (Exception e)
             {

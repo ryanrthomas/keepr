@@ -76,7 +76,7 @@ export default new Vuex.Store({
         })
     },
     getKeeps({ commit, dispatch }) {
-      api.get('keep')
+      api.get('keeps')
         .then(res => {
           commit('setKeeps', res.data)
         })

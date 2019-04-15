@@ -1,10 +1,10 @@
 <template>
-    <div class="list-keeps">
-        <div class="m-3 col-3" v-for="keep in keeps">
+    <div class="list-keeps row">
+        <div class="m-2 col-3" v-for="keep in keeps">
             <div class="card" style="width: auto;">
-                <img class="card-img-top" src="https://placehold.it/300x200" alt="Card image cap">
+                <img class="card-img-top" :src="keep.img" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> 0&nbsp<i class="fas fa-eye"></i> 0
+                    <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i class="fas fa-eye"></i> 0
                     </p>
                     <h5 class="card-title">{{keep.name}}</h5>
                     <button class="btn btn-danger m-1"><b>K</b></button>
