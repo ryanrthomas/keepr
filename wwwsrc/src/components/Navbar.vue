@@ -1,12 +1,10 @@
 <template>
     <div class="navbar">
-        <div class="navbar">
-            <h1 class="navbar">Keepr</h1>
-            <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
-                In</button>
-            <button type="button" data-toggle="modal" data-target="#registerModal"
-                class="btn m-2 btn-primary">Register</button>
-        </div>
+        <h1 class="navbar">Keepr</h1>
+        <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
+            In</button>
+        <button type="button" data-toggle="modal" data-target="#registerModal"
+            class="btn m-2 btn-primary">Register</button>
         <!-- MODAL -->
         <div id="loginModal" class="modal" role="dialog">
             <div class="modal-dialog" role="document">
@@ -54,12 +52,12 @@
 <script>
     export default {
         name: "navbar",
-        props: [ ],
+        props: [],
         mounted() { },
         data() {
-            return { }
+            return {}
         },
-        computed: { },
+        computed: {},
         methods: {
             // showLoginModal() {
             //     $('#loginModal').modal()

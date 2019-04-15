@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome home.</h1>
+    <h1>Welcome, {{username}}.</h1>
   </div>
 </template>
 
@@ -8,9 +8,14 @@
   export default {
     name: "home",
     mounted() {
-      //blocks users not logged in
+      // Blocks users not logged in
       if (!this.$store.state.user.id) {
         this.$router.push({ name: "login" });
+      }
+    },
+    computed: {
+      username() {
+        return this.$store.state.user.username
       }
     }
   };
