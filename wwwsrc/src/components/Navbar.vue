@@ -54,12 +54,12 @@
 <script>
     export default {
         name: "navbar",
-        props: [],
+        props: [ ],
         mounted() { },
         data() {
-            return {}
+            return { }
         },
-        computed: {},
+        computed: { },
         methods: {
             // showLoginModal() {
             //     $('#loginModal').modal()

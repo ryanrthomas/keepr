@@ -13,14 +13,15 @@ namespace keepr.Repositories
         {
             _db = db;
         }
-        public IEnumerable<Keep> GetAll()
+        public List<Keep> GetAll()
         {
-            return _db.Query<Keep>("SELECT * FROM keeps");
+            return _db.Query<Keep>("SELECT * FROM keeps").AsList();
         }
 
-        public Keep GetById(int Id)
+        public Keep GetById(int id)
         {
-            return _db.QueryFirstOrDefault<Keep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
+            return _db.QueryFirstOrDefault<Keep>(@"
+            SELECT * FROM keeps WHERE id = @id", new { id });
         }
 
         public Keep CreateKeep(Keep keep)
@@ -28,10 +29,8 @@ namespace keepr.Repositories
             try
             {
                 int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name, keepId)
-                    VALUES (@Name, @KeepId);
-                    SELECT LAST_INSERT_ID()
-                ", keep);
+                INSERT INTO keeps (name) VALUES (@name);
+                SELECT LAST_INSERT_ID()", keep);
                 keep.Id = id;
                 return keep;
             }
@@ -40,6 +39,7 @@ namespace keepr.Repositories
                 Console.WriteLine(e);
                 return null;
             }
+
         }
 
         public Keep EditKeep(int id, Keep editedKeep)
