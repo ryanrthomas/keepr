@@ -15,12 +15,12 @@
             <p v-if="loginForm">Click here to sign up for an account.</p>
             <p v-else>Already have an account? Click here to login.</p>
         </div>
-        <keep></keep>
+        <list-keeps></list-keeps>
     </div>
 </template>
 
 <script>
-    import Keep from "@/components/Keep.vue"
+    import ListKeeps from "@/components/ListKeeps.vue"
     import LoginModal from "@/components/LoginModal.vue"
     export default {
         name: "login",
@@ -51,7 +51,7 @@
             }
         },
         components: {
-            Keep,
+            ListKeeps,
             LoginModal
         }
     };

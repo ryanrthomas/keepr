@@ -60,12 +60,13 @@ namespace Keepr
             services.AddMvc();
 
             services.AddTransient<IDbConnection>(x => CreateDBContext());
-            
+
             // ADD REPOSITORIES HERE!
             services.AddTransient<KeepsRepository>();
-            services.AddTransient<KeepsService>();
+            // services.AddTransient<KeepsService>();
             services.AddTransient<UserRepository>();
             services.AddTransient<VaultsRepository>();
+            services.AddTransient<VaultKeepsRepository>();
         }
 
         private IDbConnection CreateDBContext()
