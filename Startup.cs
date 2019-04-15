@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using keepr.Repositories;
-using keepr.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,7 +62,6 @@ namespace Keepr
 
             // ADD REPOSITORIES HERE!
             services.AddTransient<KeepsRepository>();
-            // services.AddTransient<KeepsService>();
             services.AddTransient<UserRepository>();
             services.AddTransient<VaultsRepository>();
             services.AddTransient<VaultKeepsRepository>();
