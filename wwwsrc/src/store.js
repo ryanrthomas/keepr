@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     setKeeps(state, keeps) {
       state.keeps = keeps
+    },
+    addKeep(state, keeps){
+      state.keeps = keeps
     }
   },
   actions: {
@@ -81,10 +84,10 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    addKeep({ commit, dispatch }) {
-      api.post('keep')
+    addKeep({ commit, dispatch }, data) {
+      api.post('keeps', data)
         .then(res => {
-          commit('addKeep', res.data)
+          dispatch('getKeeps')
         })
     }
   }

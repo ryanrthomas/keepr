@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
+  <div class="home text-center">
     <h1 class="mt-2">Welcome, {{username}}.</h1>
     <h4>You can post keeps and manage your vaults here.</h4>
     <form @submit.prevent="addKeep">
-      <input class="m-2" type="text" v-model="keeps.name" placeholder="Title" required><br>
-      <input class="m-2" type="text" v-model="keeps.Description" placeholder="Description"><br>
-      <input class="m-2" type="text" v-model="keeps.Image" placeholder="Image URL" required><br>
-      <button type="submit" class="btn btn-success">Post Keep</button>
+      <input class="m-2" type="text" v-model="newKeep.name" placeholder="Title" required><br>
+      <input class="m-2" type="text" v-model="newKeep.description" placeholder="Description"><br>
+      <input class="m-2" type="text" v-model="newKeep.img" placeholder="Image URL"><br>
+      <button type="submit" class="btn btn-success mb-3">Post Keep</button>
     </form>
     <list-keeps></list-keeps>
   </div>
@@ -23,6 +23,18 @@
       // }
       this.$store.dispatch('getKeeps')
     },
+    data() {
+      return{
+        newKeep: {
+          name: "",
+          description: "",
+          img: "",
+          userId: 1,
+          shares: 0,
+          views: 0
+        }
+      }
+    },
     computed: {
       username() {
         return this.$store.state.user.username
@@ -33,8 +45,7 @@
     },
     methods: {
       addKeep() {
-        return this.$store.state.addKeep
-
+        this.$store.dispatch('addKeep', this.newKeep)
       }
     },
     components: {

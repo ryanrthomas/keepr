@@ -49,7 +49,7 @@ namespace keepr.Repositories
                 string query = @"
                 UPDATE keeps SET
                     name = @editedKeep.Name,
-                    teamId = @editedKeep.KeepId
+                    keepId = @editedKeep.KeepId
                 WHERE id = @id
                 SELECT * FROM keeps WHERE id = @id AND userId = @userId;
                 ";
