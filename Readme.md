@@ -48,7 +48,7 @@ What this site is already pretty if you follow the mocks :wink: Make sure the fe
 	- Users have a dashboard to see all their keeps and vaults
 	- Users can only see vaults they created
 	- Users can View all the keeps in a given vault
-	- Keeps show the three clicable buttons (View, Keep, Share) with affect each of the counts
+	- Keeps show the three clickable buttons (View, Keep, Share) with affect each of the counts
  #### Functionality:
 	- Users can: 
 		- Register and login 

@@ -1,7 +1,7 @@
 <template>
     <div class="list-keeps container-fluid">
         <div class="row">
-            <div class="mb-4 col-12 col-md-6 col-lg-3" v-for="keep in keeps">
+            <div class="p-0 col-12 col-md-6 col-lg-3" v-for="keep in keeps">
                 <div class="card" style="width: auto;">
                     <img class="card-img-top" :src="keep.img" alt="Card image cap">
                     <div class="card-body">
@@ -45,5 +45,6 @@
         border-style: solid;
         border-width: thin;
         border-color: black;
+        border-radius: 0%;
     }
 </style>

@@ -63,4 +63,18 @@
         color: white;
         height: auto;
     }
+
+    .login {
+        background-color: darkcyan;
+        color: white;
+        text-shadow: 1px 2px 0 black;
+    }
+
+    .card {
+        margin-top: -5px;
+        margin-right: -5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-color: white;
+        border-width: 4px;
+    }
 </style>

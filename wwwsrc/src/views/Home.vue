@@ -1,26 +1,30 @@
 <template>
   <div class="home text-center container-fluid">
-    <h1 class="mt-2">Welcome, {{username}}.</h1>
+    <h1 class="pt-2">Welcome to your dashboard, {{username}}.</h1>
     <h4>You can post keeps and manage your vaults here.</h4>
     <div class="row d-flex justify-content-center">
       <form v-if="!inputForm" name="keep-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addKeep">
         <input class="form-control m-2" type="text" v-model="newKeep.name" placeholder="Title" required><br>
         <input class="form-control m-2" type="text" v-model="newKeep.description" placeholder="Description"><br>
         <input class="form-control m-2" type="text" v-model="newKeep.img" placeholder="Image URL"><br>
-        <button type="submit" class="btn btn-success mb-3">Post Keep</button>
+        <button type="submit" class="btn btn-success mb-3 shadow">Post Keep</button>
       </form>
       <form v-else name="vault-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addVault">
         <input class="form-control m-2" type="text" v-model="newVault.name" placeholder="Name" required><br>
         <input class="form-control m-2" type="text" v-model="newVault.description" placeholder="Description"><br>
-        <button type="submit" class="btn btn-success mb-3">Create Vault</button>
+        <button type="submit" class="btn btn-success mb-3 shadow">Create Vault</button>
       </form>
     </div>
     <div class="action" @click="inputForm = !inputForm">
       <p v-if="!inputForm">Create a vault instead...</p>
       <p v-else>Post a keep instead...</p>
     </div>
-    <div v-show="!inputForm">
+    <div v-if="!inputForm">
+      <h3 class="text-left m-2 pb-2">Public Keeps</h3>
       <list-keeps></list-keeps>
+    </div>
+    <div v-else>
+      <h3>You have not created any vaults.</h3>
     </div>
   </div>
 </template>
@@ -80,8 +84,21 @@
 </script>
 
 <style>
-  .action{
+  .action {
     cursor: pointer;
   }
 
+  .home {
+    background-color: rgb(37, 150, 150);
+    color: white;
+    text-shadow: 1px 2px 0 black;
+  }
+
+  .card {
+    margin-top: -5px;
+    margin-right: -5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: white;
+    border-width: 4px;
+  }
 </style>
