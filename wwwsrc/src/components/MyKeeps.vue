@@ -1,9 +1,9 @@
 <template>
-    <div class="list-keeps container-fluid">
+    <div class="my-keeps container-fluid">
         <div class="row">
             <div class="p-0 col-12 col-sm-6 col-md-4 col-lg-3" v-for="keep in keeps">
                 <div class="card" style="width: auto;">
-                    <img class="card-img-top" :src="keep.img" alt="Card image cap">
+                    <img class="card-img-top" :src=keep.img" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{keep.name}}</h5>
                         <p class="card-description">{{keep.description}}</p>
@@ -12,24 +12,7 @@
                         </p>
                         <button class="btn btn-danger m-1 shadow" title="Keep"><b>K</b></button>
                         <button class="btn btn-warning m-1 shadow" title="Share"><i class="fas fa-share"></i></button>
-                        <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
-                            title="View"><i class="fas fa-eye"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal" id="keep-detais" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <button class="btn btn-primary m-1 shadow" title="View"><i class="fas fa-eye"></i></button>
                     </div>
                 </div>
             </div>
@@ -40,7 +23,7 @@
 
 <script>
     export default {
-        name: "list-keeps",
+        name: "my-keeps",
         props: [],
         mounted() { },
         data() {
@@ -66,7 +49,7 @@
     }
 
     /* .card-img-top{
-        height: 200px;
-        background-position: center;
-    } */
+            height: 200px;
+            background-position: center;
+        } */
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        <h1 class="navbar">Keepr</h1>
+        <h1 class="navbar-title">KEEPR</h1>
         <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
             In</button>
         <button type="button" data-toggle="modal" data-target="#registerModal"
@@ -80,5 +80,9 @@
 <style>
     .modal-content {
         color: black;
+    }
+    .navbar-title{
+        font-family: 'Oswald', sans-serif;
+        font-size: 52px;
     }
 </style>

@@ -20,13 +20,18 @@
       <p v-else>Post a keep instead...</p>
     </div>
     <div v-if="!inputForm">
-      <h3 class="text-left m-2 pb-2">My Keeps</h3>
-      <h3 class="text-center not-created">You have not created any keeps.</h3>
-      <h3 class="text-left m-2 pb-2">Public Keeps</h3>
+      <h3 class="text-left m-2 pb-2">My Keeps ({{my-keeps.length}})</h3>
+      <div v-if="my-keeps.length">
+        <my-keeps></my-keeps>
+      </div>
+      <div v-else>
+        <h3 class="not-created">You have not created any keeps.</h3>
+      </div>
+      <h3 class="text-left m-2 pb-2">Public Keeps ({{keeps.length}})</h3>
       <list-keeps></list-keeps>
     </div>
     <div v-else>
-      <h3 class="text-left m-2 pb-2">My Vaults</h3>
+      <h3 class="text-left m-2 pb-2">My Vaults ({{vaults.length}})</h3>
       <div v-if="vaults.length">
         <list-vaults></list-vaults>
       </div>
@@ -39,6 +44,7 @@
 
 <script>
   import ListKeeps from "@/components/ListKeeps.vue"
+  import MyKeeps from "@/components/MyKeeps.vue"
   import ListVaults from "@/components/ListVaults.vue"
   export default {
     name: "home",
@@ -47,6 +53,7 @@
       // if (!this.$store.state.user.id) {
       //   this.$router.push({ name: "login" });
       // }
+      this.$store.dispatch('getKeeps')
       this.$store.dispatch('getKeeps')
       this.$store.dispatch('getVaults')
     },
@@ -89,6 +96,7 @@
     },
     components: {
       ListKeeps,
+      MyKeeps,
       ListVaults
     }
   };
@@ -106,8 +114,8 @@
   }
 
   .card {
-    margin-top: -5px;
-    margin-right: -5px;
+    margin-top: -4px;
+    margin-right: -4px;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: white;
     border-width: 4px;
