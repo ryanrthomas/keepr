@@ -27,8 +27,12 @@
     </div>
     <div v-else>
       <h3 class="text-left m-2 pb-2">My Vaults</h3>
-      <h3 class="not-created">You have not created any vaults.</h3>
-      <list-vaults></list-vaults>
+      <div v-if="vaults.length">
+        <list-vaults></list-vaults>
+      </div>
+      <div v-else>
+        <h3 class="not-created">You have not created any vaults.</h3>
+      </div>
     </div>
   </div>
 </template>

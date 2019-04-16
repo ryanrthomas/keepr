@@ -12,7 +12,7 @@
                         </p>
                         <button class="btn btn-danger m-1 shadow" title="Keep"><b>K</b></button>
                         <button class="btn btn-warning m-1 shadow" title="Share"><i class="fas fa-share"></i></button>
-                        <button @click="addView" class="btn btn-primary m-1 shadow" title="View"><i
+                        <button class="btn btn-primary m-1 shadow" title="View"><i
                                 class="fas fa-eye"></i></button>
                     </div>
                 </div>
