@@ -1,11 +1,15 @@
 <template>
     <div class="navbar">
         <h1 class="navbar-title">KEEPR</h1>
-        <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
-            In</button>
-        <button type="button" data-toggle="modal" data-target="#registerModal"
-            class="btn m-2 btn-primary">Register</button>
-        <button @click="logout" type="button" class="btn m-2 btn-warning">Sign Out</button>
+        <div v-if="isLoggedIn">
+            <button @click="logout" type="button" class="btn m-2 btn-warning">Sign Out</button>
+        </div>
+        <div v-else>
+            <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
+                In</button>
+            <button type="button" data-toggle="modal" data-target="#registerModal"
+                class="btn m-2 btn-primary">Register</button>
+        </div>
         <!-- MODAL -->
         <div id="loginModal" class="modal" role="dialog">
             <div class="modal-dialog" role="document">
@@ -56,9 +60,15 @@
         props: [],
         mounted() { },
         data() {
-            return {}
+            return {
+                isLoggedIn() {
+                    return this.$store.state.user.active;
+                }
+            }
         },
-        computed: {},
+        computed: {
+
+        },
         methods: {
             // showLoginModal() {
             //     $('#loginModal').modal()
@@ -81,7 +91,8 @@
     .modal-content {
         color: black;
     }
-    .navbar-title{
+
+    .navbar-title {
         font-family: 'Oswald', sans-serif;
         font-size: 52px;
     }

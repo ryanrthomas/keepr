@@ -1,6 +1,6 @@
 <template>
   <div class="home text-center container-fluid">
-    <h1 class="pt-2">Welcome to your dashboard, {{username}}.</h1>
+    <h1 class="pt-4">Welcome to your dashboard, {{username}}.</h1>
     <h4>You can post keeps and manage your vaults here.</h4>
     <div class="row d-flex justify-content-center">
       <form v-if="!inputForm" name="keep-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addKeep">
@@ -114,8 +114,8 @@
   }
 
   .card {
-    margin-top: -4px;
-    margin-right: -4px;
+    margin-top: -5px !important;
+    margin-right: -4px !important;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: white;
     border-width: 4px;

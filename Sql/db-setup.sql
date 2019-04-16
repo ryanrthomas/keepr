@@ -68,4 +68,4 @@ use ryankeepr;
 
 -- -- PRACTICE INSERTING FAKE DATA HERES
 -- INSERT INTO keeps (name) VALUES ("test keep 1")
-INSERT INTO vaults (name, description) VALUES ("Cities", "Showcases the different cities of the world");
+INSERT INTO keeps (name, description,img) VALUES ("CodeWorks", "Intense bootcamp!","https://pbs.twimg.com/profile_images/760179006142492672/AY0L3Clk_400x400.jpg");
