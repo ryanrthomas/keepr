@@ -1,7 +1,7 @@
 <template>
   <div class="home text-center container-fluid">
     <h1 class="pt-4">Welcome to your dashboard, {{username}}.</h1>
-    <h4>You can post keeps and manage your vaults here.</h4>
+    <h4 class="pb-3">You can post keeps and manage your vaults here.</h4>
     <div class="row d-flex justify-content-center">
       <form v-if="!inputForm" name="keep-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addKeep">
         <input class="form-control m-2 shadow" type="text" v-model="newKeep.name" placeholder="Title" required><br>

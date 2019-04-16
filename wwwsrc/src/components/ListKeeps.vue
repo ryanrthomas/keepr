@@ -1,22 +1,29 @@
 <template>
     <div class="list-keeps container-fluid">
         <div class="row">
-            <div class="p-0 col-12 col-sm-6 col-md-4 col-lg-3" v-for="keep in keeps">
+            <div class="p-0 col-12 col-sm-6 col-md-4 col-xl-2" v-for="keep in keeps">
                 <div class="card" style="width: auto;">
                     <img class="card-img-top" :src="keep.img" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{keep.name}}</h5>
-                        <p class="card-description">{{keep.description}}</p>
+                        <h4 class="card-title">{{keep.name}}</h4>
+                        <!-- <p class="card-description">{{keep.description}}</p> -->
                         <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
-                            id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false"
+                            id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false"
                             title="Keep"><b>K</b></button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p v-for="vault in vaults">{{vault.name}}</p>
+                        <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
+                            <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
                         </div>
-                        <button class="btn btn-warning m-1 shadow" title="Share"><i class="fas fa-share"></i></button>
+                        <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                            id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
+                                class="fas fa-share"></i></button>
+                        <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
+                            <p>Facebook</p>
+                            <p>Twitter</p>
+                            <p>Instagram</p>
+                        </div>
                         <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
                             title="View"><i class="fas fa-eye"></i></button>
                     </div>
@@ -24,17 +31,22 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal" id="keep-detais" tabindex="-1" role="dialog">
+        <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">(Keep title goes here)</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <!-- Keep image goes here -->
+                        <img src="http://placehold.it/460x300">
+                        <p class="pt-4">(Keep description goes here)</p>
+                        <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share count)&nbsp<i
+                                class="fas fa-eye"></i> (View count)
+                        </p>
                     </div>
                 </div>
             </div>
@@ -78,10 +90,20 @@
         border-radius: 0%;
     }
 
-    .dropdown-menu {
+    .keep-menu {
         padding: 5px;
         color: white;
         text-shadow: none;
         background-color: #bd2130;
+    }
+    .share-menu {
+        padding: 5px;
+        color: black;
+        text-shadow: none;
+        background-color: gold;
+    }
+
+    .modal {
+        text-shadow: none;
     }
 </style>
