@@ -4,14 +4,14 @@
     <h4>You can post keeps and manage your vaults here.</h4>
     <div class="row d-flex justify-content-center">
       <form v-if="!inputForm" name="keep-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addKeep">
-        <input class="form-control m-2" type="text" v-model="newKeep.name" placeholder="Title" required><br>
-        <input class="form-control m-2" type="text" v-model="newKeep.description" placeholder="Description"><br>
-        <input class="form-control m-2" type="text" v-model="newKeep.img" placeholder="Image URL"><br>
+        <input class="form-control m-2 shadow" type="text" v-model="newKeep.name" placeholder="Title" required><br>
+        <input class="form-control m-2 shadow" type="text" v-model="newKeep.description" placeholder="Description"><br>
+        <input class="form-control m-2 shadow" type="text" v-model="newKeep.img" placeholder="Image URL"><br>
         <button type="submit" class="btn btn-success mb-3 shadow">Post Keep</button>
       </form>
       <form v-else name="vault-form" class="form-group col-12 col-md-5 text-center" @submit.prevent="addVault">
-        <input class="form-control m-2" type="text" v-model="newVault.name" placeholder="Name" required><br>
-        <input class="form-control m-2" type="text" v-model="newVault.description" placeholder="Description"><br>
+        <input class="form-control m-2 shadow" type="text" v-model="newVault.name" placeholder="Name" required><br>
+        <input class="form-control m-2 shadow" type="text" v-model="newVault.description" placeholder="Description"><br>
         <button type="submit" class="btn btn-success mb-3 shadow">Create Vault</button>
       </form>
     </div>
@@ -20,17 +20,22 @@
       <p v-else>Post a keep instead...</p>
     </div>
     <div v-if="!inputForm">
+      <h3 class="text-left m-2 pb-2">My Keeps</h3>
+      <h3 class="text-center not-created">You have not created any keeps.</h3>
       <h3 class="text-left m-2 pb-2">Public Keeps</h3>
       <list-keeps></list-keeps>
     </div>
     <div v-else>
-      <h3>You have not created any vaults.</h3>
+      <h3 class="text-left m-2 pb-2">My Vaults</h3>
+      <h3 class="not-created">You have not created any vaults.</h3>
+      <list-vaults></list-vaults>
     </div>
   </div>
 </template>
 
 <script>
   import ListKeeps from "@/components/ListKeeps.vue"
+  import ListVaults from "@/components/ListVaults.vue"
   export default {
     name: "home",
     mounted() {
@@ -42,7 +47,7 @@
     },
     data() {
       return {
-        inputForm: true,
+        inputForm: false,
         newKeep: {
           name: "",
           description: "",
@@ -65,7 +70,7 @@
         return this.$store.state.keeps
       },
       vaults() {
-        return this.$store.state.keeps
+        return this.$store.state.vaults
       }
     },
     methods: {
@@ -78,7 +83,8 @@
       }
     },
     components: {
-      ListKeeps
+      ListKeeps,
+      ListVaults
     }
   };
 </script>
@@ -100,5 +106,14 @@
     background-color: rgba(0, 0, 0, 0.5);
     border-color: white;
     border-width: 4px;
+  }
+
+  .not-created {
+    padding: 20px;
+    margin-bottom: 35px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: white;
+    border-width: 4px;
+    border-style: solid;
   }
 </style>

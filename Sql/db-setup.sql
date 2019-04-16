@@ -68,5 +68,4 @@ use ryankeepr;
 
 -- -- PRACTICE INSERTING FAKE DATA HERES
 -- INSERT INTO keeps (name) VALUES ("test keep 1")
--- INSERT INTO keeps (name) VALUES ("test keep 2")
-INSERT INTO keeps (name) VALUES ("test keep 2")
+INSERT INTO vaults (name, description) VALUES ("Cities", "This vault is store keeps that are city-related.");

@@ -10,9 +10,9 @@
                         <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
-                        <button class="btn btn-danger m-1" title="Keep"><b>K</b></button>
-                        <button class="btn btn-warning m-1" title="Share"><i class="fas fa-share"></i></button>
-                        <button class="btn btn-primary m-1" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn btn-danger m-1 shadow" title="Keep"><b>K</b></button>
+                        <button class="btn btn-warning m-1 shadow" title="Share"><i class="fas fa-share"></i></button>
+                        <button @click="addView" class="btn btn-primary m-1 shadow" title="View"><i class="fas fa-eye"></i></button>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,11 @@
                 return this.$store.state.keeps
             }
         },
-        methods: {},
+        methods: {
+            addView(){
+                {{keep.views + 1}}
+            }
+        },
         components: {}
     }
 </script>
@@ -47,4 +51,8 @@
         border-color: black;
         border-radius: 0%;
     }
+    /* .card-img-top{
+        height: 200px;
+        background-position: center;
+    } */
 </style>
