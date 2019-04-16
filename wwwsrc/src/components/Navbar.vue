@@ -61,13 +61,13 @@
         mounted() { },
         data() {
             return {
-                isLoggedIn() {
-                    return this.$store.state.user.active;
-                }
+
             }
         },
         computed: {
-
+            isLoggedIn() {
+                return this.$store.state.user.active;
+            }
         },
         methods: {
             // showLoginModal() {
