@@ -32,9 +32,15 @@ export default new Vuex.Store({
     setKeeps(state, keeps) {
       state.keeps = keeps
     },
-    addKeep(state, keeps){
-      state.keeps = keeps
+    // addKeep(state, keeps){
+    //   state.keeps = keeps
+    // },
+    setVaults(state, vaults){
+      state.vaults = vaults
     }
+    // addVault(state, vaults){
+    //   state.vaults = vaults
+    // }
   },
   actions: {
     register({ commit, dispatch }, newUser) {
@@ -89,6 +95,18 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getKeeps')
         })
-    }
+    },
+    getVaults({ commit, dispatch }) {
+      api.get('vaults')
+        .then(res => {
+          commit('setVaults', res.data)
+        })
+    },
+    addVault({ commit, dispatch }, data) {
+      api.post('vaults', data)
+        .then(res => {
+          dispatch('getVaults')
+        })
+    },
   }
 })
