@@ -10,7 +10,12 @@
                         <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
-                        <button class="btn btn-danger m-1 shadow" title="Keep"><b>K</b></button>
+                        <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                            id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false"
+                            title="Keep"><b>K</b></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <p v-for="vault in vaults">{{vault.name}}</p>
+                        </div>
                         <button class="btn btn-warning m-1 shadow" title="Share"><i class="fas fa-share"></i></button>
                         <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
                             title="View"><i class="fas fa-eye"></i></button>
@@ -39,20 +44,28 @@
 
 
 <script>
+    import ListVaults from "@/components/ListVaults.vue"
     export default {
         name: "list-keeps",
         props: [],
-        mounted() { },
+        mounted() {
+            this.$store.dispatch('getVaults')
+        },
         data() {
             return {}
         },
         computed: {
             keeps() {
                 return this.$store.state.keeps
+            },
+            vaults() {
+                return this.$store.state.vaults
             }
         },
         methods: {},
-        components: {}
+        components: {
+            ListVaults
+        }
     }
 </script>
 
@@ -65,8 +78,10 @@
         border-radius: 0%;
     }
 
-    /* .card-img-top{
-        height: 200px;
-        background-position: center;
-    } */
+    .dropdown-menu {
+        padding: 5px;
+        color: white;
+        text-shadow: none;
+        background-color: #bd2130;
+    }
 </style>
