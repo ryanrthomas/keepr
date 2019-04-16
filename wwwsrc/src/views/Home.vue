@@ -44,6 +44,7 @@
       //   this.$router.push({ name: "login" });
       // }
       this.$store.dispatch('getKeeps')
+      this.$store.dispatch('getVaults')
     },
     data() {
       return {

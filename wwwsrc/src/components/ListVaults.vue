@@ -2,7 +2,7 @@
     <div class="list-keeps container-fluid">
         <div class="row">
             <div class="mb-4 col-12 col-md-6 col-lg-3" v-for="vault in vaults">
-                <p>{{vault}}</p>
+                <p>{{vault.name}}, {{vault.description}}</p>
             </div>
         </div>
     </div>
