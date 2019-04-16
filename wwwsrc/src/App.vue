@@ -6,39 +6,39 @@
 </template>
 
 <script>
-    import Navbar from "@/components/Navbar.vue"
-    export default {
-        name: "login",
-        mounted() {
-            // Checks for valid session
-            this.$store.dispatch("authenticate");
+  import Navbar from "@/components/Navbar.vue"
+  export default {
+    name: "login",
+    mounted() {
+      // Checks for valid session
+      this.$store.dispatch("authenticate");
+    },
+    data() {
+      return {
+        loginForm: true,
+        creds: {
+          email: "",
+          password: ""
         },
-        data() {
-            return {
-                loginForm: true,
-                creds: {
-                    email: "",
-                    password: ""
-                },
-                newUser: {
-                    email: "",
-                    password: "",
-                    username: ""
-                }
-            };
-        },
-        methods: {
-            register() {
-                this.$store.dispatch("register", this.newUser);
-            },
-            loginUser() {
-                this.$store.dispatch("login", this.creds);
-            }
-        },
-        components: {
-            Navbar
+        newUser: {
+          email: "",
+          password: "",
+          username: ""
         }
-    };
+      };
+    },
+    methods: {
+      register() {
+        this.$store.dispatch("register", this.newUser);
+      },
+      loginUser() {
+        this.$store.dispatch("login", this.creds);
+      }
+    },
+    components: {
+      Navbar
+    }
+  };
 </script>
 
 <style>
@@ -48,6 +48,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    background-image: url("https://i0.wp.com/faircastinc.com/wp-content/uploads/2018/06/AdobeStock_100636545-1.jpeg?ssl=1");
   }
 
   #nav {

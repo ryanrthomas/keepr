@@ -1,16 +1,20 @@
 <template>
-    <div class="login">
-        <form v-if="loginForm" @submit.prevent="loginUser">
-            <input class="m-3" type="email" v-model="creds.email" placeholder="Email" required>
-            <input class="m-3" type="password" v-model="creds.password" placeholder="Password" required>
-            <button class="btn btn-light m-3 shadow" type="submit">Log In</button>
-        </form>
-        <form v-else @submit.prevent="register">
-            <input class="m-3" type="text" v-model="newUser.username" placeholder="Name" required>
-            <input class="m-3" type="email" v-model="newUser.email" placeholder="Email" required>
-            <input class="m-3" type="password" v-model="newUser.password" placeholder="Password" required>
-            <button class="btn btn-light m-1 shadow" type="submit">Create Account</button>
-        </form>
+    <div class="login text-center container-fluid">
+        <div class="row d-flex justify-content-center">
+            <form class="form-group col-12 col-md-5 text-center" v-if="loginForm" @submit.prevent="loginUser">
+                <input class="form-control m-3" type="email" v-model="creds.email" placeholder="Email" required>
+                <input class="form-control m-3" type="password" v-model="creds.password" placeholder="Password"
+                    required>
+                <button class="btn btn-light m-3 shadow" type="submit">Log In</button>
+            </form>
+            <form class="form-group col-12 col-md-5 text-center" v-else @submit.prevent="register">
+                <input class="form-control m-3" type="text" v-model="newUser.username" placeholder="Name" required>
+                <input class="form-control m-3" type="email" v-model="newUser.email" placeholder="Email" required>
+                <input class="form-control m-3" type="password" v-model="newUser.password" placeholder="Password"
+                    required>
+                <button class="btn btn-light m-1 shadow" type="submit">Create Account</button>
+            </form>
+        </div>
         <div @click="loginForm = !loginForm">
             <p v-if="loginForm">Click here to sign up for an account.</p>
             <p v-else>Already have an account? Click here to login.</p>
@@ -65,7 +69,7 @@
     }
 
     .login {
-        background-color: darkcyan;
+        /* background-image: url("https://i0.wp.com/faircastinc.com/wp-content/uploads/2018/06/AdobeStock_100636545-1.jpeg?ssl=1"); */
         color: white;
         text-shadow: 1px 2px 0 black;
     }

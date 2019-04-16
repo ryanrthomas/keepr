@@ -89,7 +89,7 @@
   }
 
   .home {
-    background-color: rgb(37, 150, 150);
+    /* background-image: url("https://i0.wp.com/faircastinc.com/wp-content/uploads/2018/06/AdobeStock_100636545-1.jpeg?ssl=1"); */
     color: white;
     text-shadow: 1px 2px 0 black;
   }
