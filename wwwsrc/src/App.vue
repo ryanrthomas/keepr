@@ -48,7 +48,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-image: url("https://i0.wp.com/faircastinc.com/wp-content/uploads/2018/06/AdobeStock_100636545-1.jpeg?ssl=1");
+    /* background-image: url("https://i0.wp.com/faircastinc.com/wp-content/uploads/2018/06/AdobeStock_100636545-1.jpeg?ssl=1"); */
+    background-image: url("http://sf.co.ua/14/09/wallpaper-1341205.jpg");
   }
 
   #nav {

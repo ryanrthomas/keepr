@@ -5,8 +5,10 @@
                 <h3>{{vault.name}}</h3>
                 <h5>{{vault.description}}</h5>
                 <vault-keeps></vault-keeps>
-                <p class="mt-0 text-right m-0"><i class="add-keep fas fa-plus pr-3" title="Add keep to vault"></i><i
-                        class="delete-vault fas fa-trash" @click="deleteVault" title="Delete vault"></i></p>
+                <div class="mt-0 text-right m-0">
+                    <button class="btn btn-dark m-1 shadow" @click="deleteVault" title="Delete keep"><i
+                            class="fas fa-trash"></i></button>
+                </div>
             </div>
         </div>
     </div>

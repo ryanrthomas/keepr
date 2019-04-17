@@ -47,7 +47,7 @@
                                 <img class="modal-image"
                                     :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'">
                                 <p class="pt-4">{{keep.description}}</p>
-                                <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i>
+                                <p class="card-text text-center"><b>K</b> 0&nbsp<i class="fas fa-share"></i>
                                     {{keep.shares}}&nbsp<i class="fas fa-eye"></i> {{keep.views}}
                                 </p>
                             </div>

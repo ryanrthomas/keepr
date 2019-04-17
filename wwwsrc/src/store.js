@@ -97,7 +97,7 @@ export default new Vuex.Store({
         })
     },
     deleteKeep({ commit, dispatch }, data) {
-      api.delete('keeps/{id}', data)
+      api.delete('keeps/', data)
         .then(res => {
           dispatch('getKeeps')
         })

@@ -15,13 +15,13 @@
                             <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
                                 id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false"
                                 title="Keep"><b>K</b></button>
-                            <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
+                            <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownButton">
                                 <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
                             </div>
                             <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
                                 id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
                                     class="fas fa-share"></i></button>
-                            <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
+                            <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownButton">
                                 <p>Facebook</p>
                                 <p>Twitter</p>
                                 <p>Instagram</p>
