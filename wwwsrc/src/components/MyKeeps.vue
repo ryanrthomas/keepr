@@ -25,8 +25,8 @@
                             <p>Twitter</p>
                             <p>Instagram</p>
                         </div>
-                        <button class="btn btn-primary m-1 shadow" data-toggle="modal" :data-target="'#keep-details-'+keep.id"
-                            title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
+                            :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
                         <!-- <p class="m-0 pt-4 text-right"><i class="delete-vault fas fa-trash" @click=""
                                 title="Delete keep"></i></p> -->
                         <button class="btn btn-dark m-1 shadow" @click="deleteKeep" title="Delete keep"><i
@@ -44,7 +44,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img class="modal-image"
+                                <img class="modal-image shadow"
                                     :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'">
                                 <p class="pt-4">{{keep.description}}</p>
                                 <p class="card-text text-center"><b>K</b> 0&nbsp<i class="fas fa-share"></i>
@@ -83,9 +83,13 @@
             }
         },
         methods: {
-            addKeepView(keep) { },
+            addKeepView(keep) {
+
+             },
             deleteKeep(keep) {
-                this.$store.dispatch("deleteKeep", this.keepData)
+                if (confirm("Are you sure you want to delete this keep?")) {
+                    this.$store.dispatch("deleteKeep", this.keepData)
+                }
             }
         },
         components: {
@@ -111,6 +115,7 @@
     .modal-image {
         width: 300px;
         height: auto;
+        border-radius: 10px;
     }
 
     .keep-menu {

@@ -26,13 +26,13 @@
                                 <p>Twitter</p>
                                 <p>Instagram</p>
                             </div>
-                            <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
+                            <button class="btn btn-primary m-1 shadow" data-toggle="modal" :data-target="'#keep-details-'+keep.id"
                                 title="View"><i @click="addKeepView" class="fas fa-eye"></i></button>
                         </div>
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
+                <div class="modal fade" :id="'keep-details-'+keep.id" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -43,8 +43,8 @@
                             </div>
                             <div class="modal-body">
                                 <!-- Keep image goes here -->
-                                <img class="modal-image"
-                                    src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
+                                <img class="modal-image shadow"
+                                    :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
                                 <p class=" pt-4">{{keep.description}}</p>
                                 <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share
                                     count)&nbsp<i class="fas fa-eye"></i>{{keep.views}}
@@ -122,5 +122,6 @@
     .modal-image {
         width: 300px;
         height: auto;
+        border-radius: 10px;
     }
 </style>

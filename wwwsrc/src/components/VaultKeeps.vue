@@ -1,33 +1,35 @@
 <template>
     <div class="vault-keeps">
-        <ul class="text-left pl-4 m-0" v-for="keep in keeps">
-            <li data-toggle="modal" data-target="#keep-details" class="p-0">{{keep.name}}</li>
-            <!-- Modal -->
-            <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">{{keep.name}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Keep image goes here -->
-                            <img class="modal-image"
-                                :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
-                                <p class=" text-center pt-4">{{keep.description}}</p>
-                            <p class="card-text text-center"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share
-                                count)&nbsp<i class="fas fa-eye"></i> {{keep.views}}</p>
-                            <p class="m-0 text-center">
-                                <button class="btn btn-dark m-1 shadow">Remove From
-                                    Vault</button>
-                            </p>
+        <div class="row" v-for="keep in keeps">
+            <div class="col-6">
+                <img class="vault-image m-1 shadow" :src="keep.img||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'" data-toggle="modal"
+                    :data-target="'#keep-details-'+keep.id">
+                <!-- Modal -->
+                <div class="modal fade" :id="'keep-details-'+keep.id" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{keep.name}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img class="modal-image shadow"
+                                    :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
+                                <p class=" pt-4">{{keep.description}}</p>
+                                <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
+                                        class="fas fa-eye"></i> {{keep.views}}</p>
+                                <p class="m-0">
+                                    <button class="btn btn-dark m-1 shadow" @click="removeFromVault">Remove From
+                                        Vault</button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </ul>
+        </div>
     </div>
 </template>
 
@@ -56,6 +58,9 @@
         methods: {
             addKeepView() {
                 // this.$store.dispatch()
+            },
+            removeFromVault() {
+                confirm("Are you sure you want to remove this keep from the vault?")
             }
         },
         components: {}
@@ -69,6 +74,15 @@
         border-width: thin;
         border-color: black;
         border-radius: 0%;
+    }
+
+    .vault-image {
+        height: auto;
+        width: 100px;
+        cursor: pointer;
+        border-color: white;
+        border-width: 2px;
+        border-style:solid;
     }
 
     .keep-menu {
@@ -92,9 +106,6 @@
     .modal-image {
         width: 300px;
         height: auto;
-    }
-
-    li {
-        cursor: pointer;
+        border-radius: 10px;
     }
 </style>
