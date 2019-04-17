@@ -24,7 +24,7 @@
                         <form @submit.prevent="loginUser">
                             <input class="m-1" type="email" v-model="creds.email" placeholder="Email" required>
                             <input class="m-1" type="password" v-model="creds.password" placeholder="Password" required><br>
-                            <button class="btn btn-primary m-1" type="submit" data-dismiss="modal">Log In</button>
+                            <button class="btn btn-primary m-1" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -92,6 +92,7 @@
                 this.$store.dispatch("register", this.newUser);
             },
             loginUser() {
+                $('#loginModal').modal('hide')
                 this.$store.dispatch("login", this.creds);
             }, 
             logoutUser() {

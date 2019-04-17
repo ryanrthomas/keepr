@@ -25,7 +25,7 @@
                             <p>Twitter</p>
                             <p>Instagram</p>
                         </div>
-                        <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
+                        <button class="btn btn-primary m-1 shadow" data-toggle="modal" :data-target="'#keep-details-'+keep.id"
                             title="View"><i class="fas fa-eye"></i></button>
                         <!-- <p class="m-0 pt-4 text-right"><i class="delete-vault fas fa-trash" @click=""
                                 title="Delete keep"></i></p> -->
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
+                <div class="modal fade" :id="'keep-details-'+keep.id" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">

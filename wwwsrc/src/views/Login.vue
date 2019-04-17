@@ -1,6 +1,6 @@
 <template>
     <div class="login text-center container-fluid">
-        <div class="row d-flex justify-content-center">
+        <!-- <div class="row d-flex justify-content-center">
             <form class="form-group col-12 col-md-5 text-center" v-if="loginForm" @submit.prevent="loginUser">
                 <input class="form-control m-3" type="email" v-model="creds.email" placeholder="Email" required>
                 <input class="form-control m-3" type="password" v-model="creds.password" placeholder="Password"
@@ -19,7 +19,7 @@
         <div @click="loginForm = !loginForm">
             <p v-if="loginForm">Click here to sign up for an account.</p>
             <p v-else>Already have an account? Click here to login.</p>
-        </div>
+        </div> -->
         <list-keeps></list-keeps>
     </div>
 </template>
@@ -53,6 +53,7 @@
                 this.$store.dispatch("register", this.newUser);
             },
             loginUser() {
+                debugger
                 this.$store.dispatch("login", this.creds);
             }
         },
