@@ -5,6 +5,7 @@
                 <input class="form-control m-3" type="email" v-model="creds.email" placeholder="Email" required>
                 <input class="form-control m-3" type="password" v-model="creds.password" placeholder="Password"
                     required>
+                <label class="form-check-label"><input type="checkbox" class="form-check-input">Remember me</label>
                 <button class="btn btn-light m-3 shadow" type="submit">Log In</button>
             </form>
             <form class="form-group col-12 col-md-5 text-center" v-else @submit.prevent="register">

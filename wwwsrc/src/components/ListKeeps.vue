@@ -43,8 +43,9 @@
                             </div>
                             <div class="modal-body">
                                 <!-- Keep image goes here -->
-                                <img class="modal-image" src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
-                                <p class="pt-4">{{keep.description}}</p>
+                                <img class="modal-image"
+                                    src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
+                                <p class=" pt-4">{{keep.description}}</p>
                                 <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share
                                     count)&nbsp<i class="fas fa-eye"></i>{{keep.views}}
                                 </p>
@@ -82,7 +83,7 @@
         },
         methods: {
             addKeepView() {
-                this.$store.dispatch()
+                // this.$store.dispatch()
             }
         },
         components: {
@@ -117,8 +118,9 @@
     .modal {
         text-shadow: none;
     }
-    .modal-image{
-            width: 300px;
-            height: auto;
-        }
+
+    .modal-image {
+        width: 300px;
+        height: auto;
+    }
 </style>

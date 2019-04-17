@@ -27,7 +27,7 @@
       <div v-else>
         <h3 class="not-created">You have not created any keeps.</h3>
       </div>
-      <h3 class="text-left m-2 pb-2">Public Keeps ({{keeps.length}})</h3>
+      <h3 class="text-left m-2 pt-3 pb-2">Public Keeps ({{keeps.length}})</h3>
       <list-keeps></list-keeps>
     </div>
     <div v-else>
