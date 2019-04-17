@@ -1,7 +1,7 @@
 <template>
     <div class="vault-keeps">
         <div class="row" v-for="keep in keeps">
-            <div class="col-6">
+            <div class="col-12">
                 <img class="vault-image m-1 shadow" :src="keep.img||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'" data-toggle="modal"
                     :data-target="'#keep-details-'+keep.id">
                 <!-- Modal -->

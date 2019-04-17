@@ -102,6 +102,9 @@ export default new Vuex.Store({
           dispatch('getKeeps')
         })
     },
+    addKeep({ commit, dispatch },) {
+     state.keeps.views++;
+    },
     getVaults({ commit, dispatch }) {
       api.get('vaults')
         .then(res => {
