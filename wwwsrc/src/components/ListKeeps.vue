@@ -4,7 +4,7 @@
             <div class="p-0 col-12 col-sm-6 col-md-4 col-xl-2" v-for="keep in keeps">
                 <div class="card" style="width: auto;">
                     <img class="card-img-top"
-                        :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg' "
+                        :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"
                         alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">{{keep.name}}</h4>
@@ -27,29 +27,29 @@
                                 <p>Instagram</p>
                             </div>
                             <button class="btn btn-primary m-1 shadow" data-toggle="modal" data-target="#keep-details"
-                                title="View"><i class="fas fa-eye"></i></button>
+                                title="View"><i @click="addKeepView" class="fas fa-eye"></i></button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">(Keep title goes here)</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Keep image goes here -->
-                        <img src="http://placehold.it/460x300">
-                        <p class="pt-4">(Keep description goes here)</p>
-                        <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share count)&nbsp<i
-                                class="fas fa-eye"></i> (View count)
-                        </p>
+                <!-- Modal -->
+                <div class="modal fade" id="keep-details" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{keep.name}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Keep image goes here -->
+                                <img class="modal-image" src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
+                                <p class="pt-4">{{keep.description}}</p>
+                                <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share
+                                    count)&nbsp<i class="fas fa-eye"></i>{{keep.views}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,11 @@
                 return this.$store.state.user.active;
             }
         },
-        methods: {},
+        methods: {
+            addKeepView() {
+                this.$store.dispatch()
+            }
+        },
         components: {
             ListVaults
         }
@@ -113,4 +117,8 @@
     .modal {
         text-shadow: none;
     }
+    .modal-image{
+            width: 300px;
+            height: auto;
+        }
 </style>

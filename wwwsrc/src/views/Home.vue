@@ -20,8 +20,8 @@
       <p v-else>Post a keep instead...</p>
     </div>
     <div v-if="!inputForm">
-      <h3 class="text-left m-2 pb-2">My Keeps ({{my-keeps.length}})</h3>
-      <div v-if="my-keeps.length">
+      <h3 class="text-left m-2 pb-2">My Keeps ({{myKeeps.length}})</h3>
+      <div v-if="myKeeps.length">
         <my-keeps></my-keeps>
       </div>
       <div v-else>
@@ -77,6 +77,9 @@
     computed: {
       username() {
         return this.$store.state.user.username
+      },
+      myKeeps() {
+        return this.$store.state.keeps
       },
       keeps() {
         return this.$store.state.keeps
