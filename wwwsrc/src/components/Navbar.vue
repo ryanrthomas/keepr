@@ -2,7 +2,7 @@
     <div class="navbar">
         <h1 class="navbar-title">KEEPR</h1>
         <div v-if="isLoggedIn">
-            <button @click="logout" type="button" class="btn m-2 btn-warning">Sign Out</button>
+            <button @click="logoutUser" type="button" class="btn m-2 btn-warning">Sign Out</button>
         </div>
         <div v-else>
             <button type="button" data-toggle="modal" data-target="#loginModal" class="btn m-2 btn-outline-primary">Sign
@@ -11,7 +11,7 @@
                 class="btn m-2 btn-primary">Register</button>
         </div>
         <!-- MODAL -->
-        <div id="loginModal" class="modal" role="dialog">
+        <div id="loginModal" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -21,16 +21,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <input class="m-1" type="email" placeholder="Email" required>
-                            <input class="m-1" type="password" placeholder="Password" required><br>
-                            <button class="btn btn-primary m-1" type="submit">Log In</button>
+                        <form @submit.prevent="loginUser">
+                            <input class="m-1" type="email" v-model="creds.email" placeholder="Email" required>
+                            <input class="m-1" type="password" v-model="creds.password" placeholder="Password" required><br>
+                            <button class="btn btn-primary m-1" type="submit" data-dismiss="modal">Log In</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="registerModal" class="modal" role="dialog">
+        <div id="registerModal" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -40,11 +40,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <input class="m-1" type="text" placeholder="Name" required>
-                            <input class="m-1" type="email" placeholder="Email" required>
-                            <input class="m-1" type="password" placeholder="Password" required><br>
-                            <button class="btn btn-primary m-1" type="submit">Create Account</button>
+                        <form @submit.prevent="register">
+                            <input class="m-1" type="text" v-model="newUser.username" placeholder="Name" required>
+                            <input class="m-1" type="email" v-model="newUser.email" placeholder="Email" required>
+                            <input class="m-1" type="password" v-model="newUser.password" placeholder="Password" required><br>
+                            <button class="btn btn-primary m-1" type="submit" data-dismiss="modal">Create Account</button>
                         </form>
                     </div>
                 </div>
@@ -58,16 +58,28 @@
     export default {
         name: "navbar",
         props: [],
-        mounted() { },
+        mounted() {
+            // Checks for valid session
+            this.$store.dispatch("authenticate");
+        },
         data() {
             return {
-
+                creds: {
+                    email: "",
+                    password: ""
+                },
+                newUser: {
+                    email: "",
+                    password: "",
+                    username: ""
+                }
             }
         },
         computed: {
             isLoggedIn() {
                 return this.$store.state.user.active;
             }
+        
         },
         methods: {
             // showLoginModal() {
@@ -75,8 +87,14 @@
             // },
             // showRegisterModal() {
             //     $('#registerModal').modal()
-            // }, 
-            logout() {
+            // },
+            register() {
+                this.$store.dispatch("register", this.newUser);
+            },
+            loginUser() {
+                this.$store.dispatch("login", this.creds);
+            }, 
+            logoutUser() {
                 this.$store.dispatch("logout", this.user)
             }
         },

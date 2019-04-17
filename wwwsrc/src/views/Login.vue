@@ -31,6 +31,7 @@
         mounted() {
             // Checks for valid session
             this.$store.dispatch("authenticate");
+            this.$store.dispatch("getKeeps");
         },
         data() {
             return {
