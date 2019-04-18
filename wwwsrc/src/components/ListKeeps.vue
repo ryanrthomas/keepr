@@ -8,17 +8,17 @@
                         alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">{{keep.name}}</h4>
-                        <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
+                        <p class="card-text"><b>K</b> {{keep.keeps}}&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <div v-if="isLoggedIn">
-                            <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                            <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)" data-toggle="dropdown"
                                 id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false"
                                 title="Keep"><b>K</b></button>
                             <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownButton">
                                 <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
                             </div>
-                            <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                            <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)" data-toggle="dropdown"
                                 id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
                                     class="fas fa-share"></i></button>
                             <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownButton">
@@ -26,8 +26,9 @@
                                 <p>Twitter</p>
                                 <p>Instagram</p>
                             </div>
-                            <button class="btn btn-primary m-1 shadow" data-toggle="modal" :data-target="'#keep-details-'+keep.id"
-                                title="View"><i @click="addKeepView" class="fas fa-eye"></i></button>
+                            <button class="btn btn-primary m-1 shadow" data-toggle="modal"
+                                :data-target="'#keep-details-'+keep.id" title="View"><i @click="addKeepView(keep)"
+                                    class="fas fa-eye"></i></button>
                         </div>
                     </div>
                 </div>
@@ -82,8 +83,21 @@
             }
         },
         methods: {
-            addKeepView() {
-                // this.$store.dispatch()
+            addKeepCount(keep) {
+                keep.keeps++;
+                this.$store.dispatch('addKeepCount', keep)
+            },
+            addKeepShare(keep) {
+                keep.shares++;
+                this.$store.dispatch('addKeepShare', keep)
+            },
+            addKeepView(keep) {
+                keep.views++;
+                this.$store.dispatch('addKeepView', keep)
+            },
+            addVaultKeep(keep){
+                keep.keeps++;
+                this.$store.dispatch('addVaultKeep', keep)
             }
         },
         components: {

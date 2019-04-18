@@ -15,7 +15,7 @@ namespace keepr.Repositories
         }
         public List<VaultKeep> GetAll()
         {
-            return _db.Query<VaultKeep>("SELECT * FROM ").AsList();
+            return _db.Query<VaultKeep>("SELECT * FROM vaultkeeps").AsList();
         }
 
         public VaultKeep GetById(int id)

@@ -8,7 +8,7 @@
                         alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{keep.name}}</h5>
-                        <p class="card-text"><b>K</b>{{keep.keeps}} <i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
+                        <p class="card-text"><b>K</b> {{keep.keeps}} <i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)"
@@ -21,9 +21,9 @@
                         <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true" aria-expanded="false"
                             title="Share"><i class="fas fa-share"></i></button>
                         <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
-                            <p @click="addKeepShare(keep)">Facebook</p>
-                            <p @click="addKeepShare(keep)">Twitter</p>
-                            <p @click="addKeepShare(keep)">Instagram</p>
+                            <p @click="addKeepShare(keep)" href="http://www.facebook.com">Facebook</p>
+                            <p @click="addKeepShare(keep)" href="http://www.twitter.com">Twitter</p>
+                            <p @click="addKeepShare(keep)" href="http://www.instagram.com">Instagram</p>
                         </div>
                         <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
                             :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
