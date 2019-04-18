@@ -97,19 +97,20 @@ export default new Vuex.Store({
           dispatch('getKeeps')
         })
     },
-    deleteKeep({ commit, dispatch }, keepId) {
-      api.delete('keeps/', keepId)
-        .then(res => {
-          dispatch('getKeeps')
+    deleteKeep({ commit, dispatch }, keep) {
+      api.delete(`Keeps/${keep.id}`, keep)
+      .then(res => {
+        dispatch('getKeeps')
+        debugger
         })
     },
-    addKeepCount({ commit, dispatch }, ) {
+    addKeepCount({ commit, dispatch } ) {
       api.put(`keeps/${keep.id}`, keep)
         .then(res => {
           dispatch('getKeeps')
         })
     },
-    addKeepShare({ commit, dispatch }, ) {
+    addKeepShare({ commit, dispatch } ) {
       api.put(`keeps/${keep.id}`, keep)
         .then(res => {
           dispatch('getKeeps')

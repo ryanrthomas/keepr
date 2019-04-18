@@ -77,7 +77,7 @@ namespace keepr.Controllers
             bool successful = _pr.Delete(id);
             if (successful)
             {
-                return BadRequest();
+                return BadRequest("Failed to delete keep");
             }
             return Ok();
         }
