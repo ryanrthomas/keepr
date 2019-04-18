@@ -44,7 +44,7 @@
                             <input class="m-1 form-control" type="text" v-model="newUser.username" placeholder="Name" required>
                             <input class="m-1 form-control" type="email" v-model="newUser.email" placeholder="Email" required>
                             <input class="m-1 form-control" type="password" v-model="newUser.password" placeholder="Password" required><br>
-                            <button class="btn btn-primary m-1" type="submit" data-dismiss="modal">Create Account</button>
+                            <button class="btn btn-primary m-1" type="submit">Create Account</button>
                         </form>
                     </div>
                 </div>
