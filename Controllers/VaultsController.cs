@@ -58,7 +58,7 @@ namespace keepr.Controllers
             {
                 return BadRequest();
             }
-            return CreatedAtAction("newVault", vault);
+            return Ok(vault);
         }
 
         // EDIT

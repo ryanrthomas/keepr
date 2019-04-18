@@ -36,7 +36,7 @@ export default new Vuex.Store({
     // addKeep(state, keeps){
     //   state.keeps = keeps
     // },
-    setVaults(state, vaults){
+    setVaults(state, vaults) {
       state.vaults = vaults
     }
     // addVault(state, vaults){
@@ -91,7 +91,7 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    addKeep({ commit, dispatch }, data ) {
+    addKeep({ commit, dispatch }, data) {
       api.post('keeps', data)
         .then(res => {
           dispatch('getKeeps')
@@ -103,14 +103,17 @@ export default new Vuex.Store({
           dispatch('getKeeps')
         })
     },
-    addKeepCount({ commit, dispatch },) {
-     state.keeps.keeps++;
+    addKeepCount({ commit, dispatch }, ) {
+
     },
-    addKeepShare({ commit, dispatch },) {
-     state.keeps.shares++;
+    addKeepShare({ commit, dispatch }, ) {
+
     },
-    addKeepView({ commit, dispatch },) {
-     state.keeps.views++;
+    addKeepView({ commit, dispatch }, keep) {
+      api.put(`keeps/${keep.id}`, keep)
+        .then(res => {
+          dispatch('getKeeps')
+        })
     },
     getVaults({ commit, dispatch }) {
       api.get('vaults')

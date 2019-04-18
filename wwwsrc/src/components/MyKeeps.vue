@@ -25,7 +25,7 @@
                             <p>Twitter</p>
                             <p>Instagram</p>
                         </div>
-                        <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep.id)" data-toggle="modal"
+                        <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
                             :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
                         <button class="btn btn-dark m-1 shadow" @click="deleteKeep(keep.id)" title="Delete keep"><i
                                 class="fas fa-trash"></i></button>
@@ -81,8 +81,9 @@
             }
         },
         methods: {
-            addKeepView() {
-                this.$store.dispatch('addKeepView')
+            addKeepView(keep) {
+                keep.views++;
+                this.$store.dispatch('addKeepView', keep)
              },
             deleteKeep(keepId) {
                 if (confirm("Are you sure you want to delete this keep?")) {
