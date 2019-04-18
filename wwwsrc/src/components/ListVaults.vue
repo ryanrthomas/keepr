@@ -7,7 +7,7 @@
                 <p class="pb-1"><i>({{keeps.length}} keeps)</i></p>
                 <vault-keeps></vault-keeps>
                 <div class="mt-0 text-right m-0">
-                    <button class="btn btn-dark m-1 shadow" @click="deleteVault" title="Delete vault"><i
+                    <button class="btn btn-dark m-1 shadow" @click="deleteVault(vault)" title="Delete vault"><i
                             class="fas fa-trash"></i></button>
                 </div>
             </div>
@@ -35,7 +35,9 @@
         },
         methods: {
             deleteVault(vault) {
-                confirm("Are you sure you want to delete this vault?")
+                if (confirm("Are you sure you want to delete this vault?")) {
+                    this.$store.dispatch("deleteVault", vault)
+                }
             }
         },
         components: {

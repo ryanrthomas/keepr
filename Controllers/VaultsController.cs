@@ -56,7 +56,7 @@ namespace keepr.Controllers
             Vault newVault = _tr.CreateVault(vault);
             if (newVault == null)
             {
-                return BadRequest();
+                return BadRequest("Failed to create vault");
             }
             return Ok(vault);
         }
@@ -80,7 +80,7 @@ namespace keepr.Controllers
             bool successful = _tr.Delete(id);
             if (successful)
             {
-                return BadRequest();
+                return BadRequest("Failed to delete vault");
             }
             return Ok();
         }
