@@ -29,10 +29,10 @@ namespace keepr.Repositories
             try
             {
                 int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name) VALUES (@name),
-                INSERT INTO keeps (description) VALUES (@description),
-                INSERT INTO keeps (img) VALUES (@img);
-                SELECT LAST_INSERT_ID()", keep);
+                    INSERT INTO keeps (id, name, description, img, userId, isPrivate, views, shares, keeps)
+                    VALUES (@Id, @Name, @Description, @Img, @UserId, @IsPrivate, @Views, @Shares, @Keeps);
+                    SELECT LAST_INSERT_ID()
+                ", keep);
                 keep.Id = id;
                 return keep;
             }

@@ -11,13 +11,13 @@
                         <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
-                        <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                        <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)" data-toggle="dropdown"
                             id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false" title="Keep">
                             <b>K</b></button>
                         <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
                             <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
                         </div>
-                        <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                        <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)" data-toggle="dropdown"
                             id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
                                 class="fas fa-share"></i></button>
                         <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
@@ -81,6 +81,14 @@
             }
         },
         methods: {
+            addKeepCount(keep) {
+                // keep.views++;  CHANGE TO KEEP COUNT!!!!
+                this.$store.dispatch('addKeepCount', keep)
+             },
+            addKeepShare(keep) {
+                keep.shares++;
+                this.$store.dispatch('addKeepShare', keep)
+             },
             addKeepView(keep) {
                 keep.views++;
                 this.$store.dispatch('addKeepView', keep)

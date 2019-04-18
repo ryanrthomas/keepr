@@ -48,15 +48,12 @@ namespace keepr.Controllers
         [Authorize]
         public ActionResult<Keep> Create([FromBody] Keep keep)
         {
-            //req.session.uid
-            string userId = HttpContext.User.Identity.Name;
-            keep.UserId = userId;
             Keep newKeep = _pr.CreateKeep(keep);
             if (newKeep == null)
             {
-                return BadRequest();
+                return BadRequest("Failed to create keep");
             }
-            return Ok(newKeep);
+            return Ok(keep);
         }
 
         // EDIT

@@ -64,7 +64,9 @@
           name: "",
           description: "",
           img: "",
-          userId: 1,
+          isPrivate: true,
+          userId: "",
+          keeps: 0,
           shares: 0,
           views: 0
         },
@@ -78,6 +80,9 @@
       username() {
         return this.$store.state.user.username
       },
+      userId() {
+        return this.$store.state.user.id
+      },
       myKeeps() {
         return this.$store.state.keeps
       },
@@ -90,11 +95,14 @@
     },
     methods: {
       addKeep() {
-        this.$store.dispatch('addKeep', this.newKeep)
-        this.newKeep = { name: "", description: "", img: "" };
+        let newKeep = this.newKeep
+        newKeep.userId = this.userId
+        this.$store.dispatch('addKeep', newKeep)
+        this.newKeep = { name: "", description: "", img: "" }
       },
       addVault() {
         this.$store.dispatch('addVault', this.newVault)
+        this.newVault = { name: "", description: "" }
       }
     },
     components: {

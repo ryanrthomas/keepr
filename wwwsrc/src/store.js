@@ -92,7 +92,7 @@ export default new Vuex.Store({
         })
     },
     addKeep({ commit, dispatch }, data) {
-      api.post('keeps', data)
+      api.post('Keeps', data)
         .then(res => {
           dispatch('getKeeps')
         })
@@ -104,10 +104,16 @@ export default new Vuex.Store({
         })
     },
     addKeepCount({ commit, dispatch }, ) {
-
+      api.put(`keeps/${keep.id}`, keep)
+        .then(res => {
+          dispatch('getKeeps')
+        })
     },
     addKeepShare({ commit, dispatch }, ) {
-
+      api.put(`keeps/${keep.id}`, keep)
+        .then(res => {
+          dispatch('getKeeps')
+        })
     },
     addKeepView({ commit, dispatch }, keep) {
       api.put(`keeps/${keep.id}`, keep)

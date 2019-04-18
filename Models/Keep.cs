@@ -12,10 +12,12 @@ namespace keepr.Models
 
         public string UserId { get; set; }
         [Required]
-     
+
         public string Img { get; set; }
         [Required]
         public int Views { get; set; }
         public int Shares { get; set; }
+        public int Keeps { get; set; }
+        public bool IsPrivate { get; set; }
     }
 }
