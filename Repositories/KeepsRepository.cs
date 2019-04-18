@@ -44,18 +44,19 @@ namespace keepr.Repositories
 
         }
 
-        public Keep EditKeep(int id, Keep editedKeep, string userId)
+        public Keep EditKeep(Keep editedKeep)
         {
             try
             {
                 string query = @"
                 UPDATE keeps SET
-                    name = @editedKeep.Name,
-                    keepId = @editedKeep.KeepId
-                WHERE id = @id
-                SELECT * FROM keeps WHERE id = @id AND userId = @userId;
+                    name = @Name, views = @Views, shares = @Shares, keeps = @Keeps
+                WHERE id = @id;
+                SELECT * FROM keeps WHERE id = @Id AND userId = @UserId;
                 ";
-                return _db.QueryFirstOrDefault<Keep>(query, new { id, editedKeep, userId });
+                _db.QueryFirstOrDefault<Keep>(query, editedKeep);
+                return editedKeep;
+
             }
             catch (Exception e)
             {

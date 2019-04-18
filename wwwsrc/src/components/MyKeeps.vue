@@ -8,7 +8,7 @@
                         alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{keep.name}}</h5>
-                        <p class="card-text"><b>K</b> 0&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
+                        <p class="card-text"><b>K</b>{{keep.keeps}} <i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)"
@@ -16,15 +16,14 @@
                             title="Keep">
                             <b>K</b></button>
                         <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
-                            <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
+                            <p class="menu-option m-0 pl-2" @click="addKeepCount(keep)" v-for="vault in vaults">{{vault.name}}</p>
                         </div>
-                        <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)"
-                            data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true" aria-expanded="false"
+                        <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true" aria-expanded="false"
                             title="Share"><i class="fas fa-share"></i></button>
                         <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
-                            <p>Facebook</p>
-                            <p>Twitter</p>
-                            <p>Instagram</p>
+                            <p @click="addKeepShare(keep)">Facebook</p>
+                            <p @click="addKeepShare(keep)">Twitter</p>
+                            <p @click="addKeepShare(keep)">Instagram</p>
                         </div>
                         <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
                             :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
@@ -83,7 +82,7 @@
         },
         methods: {
             addKeepCount(keep) {
-                // keep.views++;  CHANGE TO KEEP COUNT!!!!
+                keep.keeps++;
                 this.$store.dispatch('addKeepCount', keep)
             },
             addKeepShare(keep) {
@@ -125,18 +124,19 @@
         height: auto;
         border-radius: 10px;
     }
-
     .keep-menu {
         padding: 5px;
         color: white;
         text-shadow: none;
         background-color: #bd2130;
     }
-
     .share-menu {
         padding: 5px;
         color: black;
         text-shadow: none;
         background-color: gold;
+    }
+    .menu-option{
+        cursor: pointer;
     }
 </style>

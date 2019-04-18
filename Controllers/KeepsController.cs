@@ -61,11 +61,11 @@ namespace keepr.Controllers
         [Authorize]
         public ActionResult<Keep> Edit(int id, [FromBody] Keep editedKeep)
         {
-            string userId = HttpContext.User.Identity.Name;
-            Keep updatedKeep = _pr.EditKeep(id, editedKeep, userId);
+            editedKeep.UserId = HttpContext.User.Identity.Name;
+            Keep updatedKeep = _pr.EditKeep(editedKeep);
             if (updatedKeep == null)
             {
-                return BadRequest();
+                return BadRequest("Failed to edit keep");
             }
             return Ok(updatedKeep);
         }

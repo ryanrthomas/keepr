@@ -103,13 +103,13 @@ export default new Vuex.Store({
         dispatch('getKeeps')
         })
     },
-    addKeepCount({ commit, dispatch } ) {
+    addKeepCount({ commit, dispatch }, keep) {
       api.put(`keeps/${keep.id}`, keep)
         .then(res => {
           dispatch('getKeeps')
         })
     },
-    addKeepShare({ commit, dispatch } ) {
+    addKeepShare({ commit, dispatch }, keep ) {
       api.put(`keeps/${keep.id}`, keep)
         .then(res => {
           dispatch('getKeeps')
