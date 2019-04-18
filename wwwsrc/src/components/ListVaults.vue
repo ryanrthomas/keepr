@@ -7,7 +7,7 @@
                 <p class="pb-1"><i>({{keeps.length}} keeps)</i></p>
                 <vault-keeps></vault-keeps>
                 <div class="mt-0 text-right m-0">
-                    <button class="btn btn-dark m-1 shadow" @click="deleteVault" title="Delete keep"><i
+                    <button class="btn btn-dark m-1 shadow" @click="deleteVault" title="Delete vault"><i
                             class="fas fa-trash"></i></button>
                 </div>
             </div>

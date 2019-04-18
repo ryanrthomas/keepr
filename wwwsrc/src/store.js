@@ -23,7 +23,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     vaults: [],
-    keeps: []
+    keeps: [],
+    vaultKeeps: []
   },
   mutations: {
     setUser(state, user) {
@@ -90,19 +91,25 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    addKeep({ commit, dispatch }, data) {
+    addKeep({ commit, dispatch }, data ) {
       api.post('keeps', data)
         .then(res => {
           dispatch('getKeeps')
         })
     },
-    deleteKeep({ commit, dispatch }, data) {
-      api.delete('keeps/', data)
+    deleteKeep({ commit, dispatch }, keepId) {
+      api.delete('keeps/', keepId)
         .then(res => {
           dispatch('getKeeps')
         })
     },
-    addKeep({ commit, dispatch },) {
+    addKeepCount({ commit, dispatch },) {
+     state.keeps.keeps++;
+    },
+    addKeepShare({ commit, dispatch },) {
+     state.keeps.shares++;
+    },
+    addKeepView({ commit, dispatch },) {
      state.keeps.views++;
     },
     getVaults({ commit, dispatch }) {

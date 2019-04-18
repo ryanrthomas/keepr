@@ -1,7 +1,7 @@
 <template>
     <div class="list-keeps container-fluid">
         <div class="row">
-            <div class="p-0 col-12 col-sm-6 col-md-4 col-xl-2" v-for="keep in keeps">
+            <div class="col p-0 col-12 col-sm-4 col-md-3 col-xl-2" v-for="keep in keeps">
                 <div class="card" style="width: auto;">
                     <img class="card-img-top"
                         :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"

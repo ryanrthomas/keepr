@@ -50,9 +50,9 @@
     name: "home",
     mounted() {
       // Blocks users not logged in
-      // if (!this.$store.state.user.id) {
-      //   this.$router.push({ name: "login" });
-      // }
+      if (!this.$store.state.user.id) {
+        this.$router.push({ name: "login" });
+      }
       this.$store.dispatch('getKeeps')
       this.$store.dispatch('getKeeps')
       this.$store.dispatch('getVaults')

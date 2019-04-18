@@ -25,11 +25,9 @@
                             <p>Twitter</p>
                             <p>Instagram</p>
                         </div>
-                        <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
+                        <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep.id)" data-toggle="modal"
                             :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
-                        <!-- <p class="m-0 pt-4 text-right"><i class="delete-vault fas fa-trash" @click=""
-                                title="Delete keep"></i></p> -->
-                        <button class="btn btn-dark m-1 shadow" @click="deleteKeep" title="Delete keep"><i
+                        <button class="btn btn-dark m-1 shadow" @click="deleteKeep(keep.id)" title="Delete keep"><i
                                 class="fas fa-trash"></i></button>
                     </div>
                 </div>
@@ -64,7 +62,7 @@
     import ListVaults from "@/components/ListVaults.vue"
     export default {
         name: "my-keeps",
-        props: ['keepData'],
+        props: ['keepId'],
         mounted() {
             this.$store.dispatch('getVaults')
         },
@@ -83,12 +81,12 @@
             }
         },
         methods: {
-            addKeepView(keep) {
-                this.$store.dispatch('addKeepView', this.keepData)
+            addKeepView() {
+                this.$store.dispatch('addKeepView')
              },
-            deleteKeep(keep) {
+            deleteKeep(keepId) {
                 if (confirm("Are you sure you want to delete this keep?")) {
-                    this.$store.dispatch("deleteKeep", this.keepData)
+                    this.$store.dispatch("deleteKeep", keepId )
                 }
             }
         },

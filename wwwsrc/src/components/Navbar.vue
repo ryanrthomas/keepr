@@ -21,9 +21,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="loginUser">
-                            <input class="m-1" type="email" v-model="creds.email" placeholder="Email" required>
-                            <input class="m-1" type="password" v-model="creds.password" placeholder="Password" required><br>
+                        <form class="form-group" @submit.prevent="loginUser">
+                            <input class="m-1 form-control" type="email" v-model="creds.email" placeholder="Email" required>
+                            <input class="m-1 form-control" type="password" v-model="creds.password" placeholder="Password" required><br>
                             <button class="btn btn-primary m-1" type="submit">Submit</button>
                         </form>
                     </div>
@@ -40,10 +40,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="register">
-                            <input class="m-1" type="text" v-model="newUser.username" placeholder="Name" required>
-                            <input class="m-1" type="email" v-model="newUser.email" placeholder="Email" required>
-                            <input class="m-1" type="password" v-model="newUser.password" placeholder="Password" required><br>
+                        <form class="form-group" @submit.prevent="register">
+                            <input class="m-1 form-control" type="text" v-model="newUser.username" placeholder="Name" required>
+                            <input class="m-1 form-control" type="email" v-model="newUser.email" placeholder="Email" required>
+                            <input class="m-1 form-control" type="password" v-model="newUser.password" placeholder="Password" required><br>
                             <button class="btn btn-primary m-1" type="submit" data-dismiss="modal">Create Account</button>
                         </form>
                     </div>
