@@ -24,7 +24,7 @@ export default new Vuex.Store({
     user: {},
     vaults: [],
     keeps: [],
-    vaultKeeps: []
+    vaultKeeps:{}
   },
   mutations: {
     setUser(state, user) {
@@ -89,8 +89,8 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    getVaultKeeps({ commit, dispatch }) {
-      api.get('vaultKeeps')
+    getVaultKeeps({ commit, dispatch }, vaultKeep) {
+      api.get(`vaultKeeps/${vaultKeep.id}`)
         .then(res => {
           commit('setVaultKeeps', res.data)
         })

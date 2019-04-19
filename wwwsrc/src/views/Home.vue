@@ -16,8 +16,8 @@
       </form>
     </div>
     <div class="action" @click="inputForm = !inputForm">
-      <p v-if="!inputForm">Create a vault instead...</p>
-      <p v-else>Post a keep instead...</p>
+      <h5 v-if="!inputForm">Create a vault instead...</h5>
+      <h5 v-else>Post a keep instead...</h5>
     </div>
     <div v-if="!inputForm">
       <h3 class="text-left m-2 pb-2">My Keeps ({{myKeeps.length}})</h3>
@@ -55,7 +55,7 @@
       }
       this.$store.dispatch('getKeeps')
       this.$store.dispatch('getVaults')
-      this.$store.dispatch('getVaultKeeps')
+      this.$store.dispatch('getVaultKeeps(vault)')
     },
     data() {
       return {
@@ -91,6 +91,9 @@
       },
       vaults() {
         return this.$store.state.vaults
+      },
+      vaultKeeps() {
+        return this.$store.state.vaultKeeps
       }
     },
     methods: {
