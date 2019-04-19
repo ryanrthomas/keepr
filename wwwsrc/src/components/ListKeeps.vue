@@ -12,19 +12,27 @@
                             {{keep.shares}}&nbsp<i class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <div v-if="isLoggedIn">
-                            <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)"
-                                data-toggle="dropdown" id="dropdownKeepButton" aria-haspopup="true"
-                                aria-expanded="false" title="Keep"><b>K</b></button>
-                            <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownButton">
-                                <p class="m-0 pl-2" @click="addVaultKeep(keep)" v-for="vault in vaults">{{vault.name}}</p>
+                            <div>
+                                <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                                    id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false" title="Keep">
+                                    <b>K</b></button>
+                                <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
+                                    <p class="menu-option m-0 pl-2" @click="addKeepCount(keep)" v-for="vault in vaults">
+                                        {{vault.name}}</p>
+                                </div>
                             </div>
-                            <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)"
-                                data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true"
-                                aria-expanded="false" title="Share"><i class="fas fa-share"></i></button>
-                            <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownButton">
-                                <p>Facebook</p>
-                                <p>Twitter</p>
-                                <p>Instagram</p>
+                            <div>
+                                <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                                    id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
+                                        class="fas fa-share"></i></button>
+                                <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
+                                    <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                        href="http://www.facebook.com" target="_blank">Facebook</a><br>
+                                    <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                        href="http://www.twitter.com" target="_blank">Twitter</a><br>
+                                    <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                        href="http://www.instagram.com" target="_blank">Instagram</a>
+                                </div>
                             </div>
                             <button class="btn btn-primary m-1 shadow" data-toggle="modal"
                                 :data-target="'#keep-details-'+keep.id" title="View"><i @click="addKeepView(keep)"
@@ -47,7 +55,8 @@
                                 <img class="modal-image shadow"
                                     :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'"">
                                 <p class=" pt-4">{{keep.description}}</p>
-                                <p class="card-text text-right"><b>K</b> 0&nbsp<i class="fas fa-share"></i> (Share
+                                <p class="card-text text-right"><b>K</b> {{keep.keeps}}&nbsp<i class="fas fa-share"></i>
+                                    (Share
                                     count)&nbsp<i class="fas fa-eye"></i>{{keep.views}}
                                 </p>
                             </div>

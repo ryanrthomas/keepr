@@ -45,8 +45,8 @@
             return {}
         },
         computed: {
-            keeps() {
-                return this.$store.state.keeps
+            vaultKeeps() {
+                return this.$store.state.vaultKeeps
             },
             vaults() {
                 return this.$store.state.vaults

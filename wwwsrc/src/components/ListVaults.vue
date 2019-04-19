@@ -4,8 +4,13 @@
             <div class="vault mb-4 pb-3 pr-3 col-12 col-sm-6 col-md-3" v-for="vault in vaults">
                 <h3>{{vault.name}}</h3>
                 <h5>{{vault.description}}</h5>
-                <p class="pb-1"><i>({{vaultKeeps.length}} keeps)</i></p>
-                <vault-keeps></vault-keeps>
+                <div v-if="vaultKeeps.length">
+                    <p class="pb-1"><i>({{vaultKeeps.length}} keeps)</i></p>
+                    <vault-keeps></vault-keeps>
+                </div>
+                <div v-else>
+                    <p><i>(No keeps in this vault)</i></p>
+                </div>
                 <div class="mt-0 text-right m-0">
                     <button class="btn btn-dark m-1 shadow" @click="deleteVault(vault)" title="Delete vault"><i
                             class="fas fa-trash"></i></button>

@@ -25,9 +25,12 @@
                                 id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
                                     class="fas fa-share"></i></button>
                             <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
-                                <a @click="addKeepShare(keep)" href="http://www.facebook.com" target="_blank">Facebook</a><br>
-                                <a @click="addKeepShare(keep)" href="http://www.twitter.com" target="_blank">Twitter</a><br>
-                                <a @click="addKeepShare(keep)" href="http://www.instagram.com" target="_blank">Instagram</a>
+                                <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                    href="http://www.facebook.com" target="_blank">Facebook</a><br>
+                                <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                    href="http://www.twitter.com" target="_blank">Twitter</a><br>
+                                <a class="menu-option text-dark" @click="addKeepShare(keep)"
+                                    href="http://www.instagram.com" target="_blank">Instagram</a>
                             </div>
                         </div>
                         <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
@@ -50,7 +53,8 @@
                                 <img class="modal-image shadow"
                                     :src="keep.img ||'https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg'">
                                 <p class="pt-4">{{keep.description}}</p>
-                                <p class="card-text text-center"><b>K</b> 0&nbsp<i class="fas fa-share"></i>
+                                <p class="card-text text-center"><b>K</b> {{keep.keeps}}&nbsp<i
+                                        class="fas fa-share"></i>
                                     {{keep.shares}}&nbsp<i class="fas fa-eye"></i> {{keep.views}}
                                 </p>
                             </div>
