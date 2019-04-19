@@ -16,7 +16,7 @@
                                 id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false" title="Keep">
                                 <b>K</b></button>
                             <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
-                                <p class="menu-option m-0 pl-2" @click="addKeepCount(keep)" v-for="vault in vaults">
+                                <p class="menu-option m-0 pl-2" @click="addKeepCount(keep), addVaultKeep(keep)" v-for="vault in vaults">
                                     {{vault.name}}</p>
                             </div>
                         </div>
@@ -106,6 +106,10 @@
                 if (confirm("Are you sure you want to delete this keep?")) {
                     this.$store.dispatch("deleteKeep", keep)
                 }
+            },
+            addVaultKeep(keep) {
+                // keep.keeps++;
+                this.$store.dispatch('addVaultKeep', keep)
             }
         },
         components: {
