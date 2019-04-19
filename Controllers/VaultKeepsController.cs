@@ -46,10 +46,10 @@ namespace keepr.Controllers
         [HttpPost]
         public ActionResult<VaultKeep> Create([FromBody] VaultKeep vaultKeep)
         {
-            VaultKeep newVaultKeep = _vkr.CreateKeep(vaultKeep);
+            VaultKeep newVaultKeep = _vkr.CreateVaultKeep(vaultKeep);
             if (newVaultKeep == null)
             {
-                return BadRequest();
+                return BadRequest("Failed to create vault keep");
             }
             return Ok(newVaultKeep);
         }

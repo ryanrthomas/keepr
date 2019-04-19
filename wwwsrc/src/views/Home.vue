@@ -54,8 +54,8 @@
         this.$router.push({ name: "login" });
       }
       this.$store.dispatch('getKeeps')
-      this.$store.dispatch('getKeeps')
       this.$store.dispatch('getVaults')
+      this.$store.dispatch('getVaultKeeps')
     },
     data() {
       return {
@@ -103,6 +103,9 @@
       addVault() {
         this.$store.dispatch('addVault', this.newVault)
         this.newVault = { name: "", description: "" }
+      },
+      addVaultKeep(){
+        this.$store.dispatch('addVaultKeep', this.newVaultKeep)
       }
     },
     components: {

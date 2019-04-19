@@ -8,19 +8,19 @@
                         alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">{{keep.name}}</h4>
-                        <p class="card-text"><b>K</b> {{keep.keeps}}&nbsp<i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
-                                class="fas fa-eye"></i> {{keep.views}}
+                        <p class="card-text"><b>K</b> {{keep.keeps}}&nbsp<i class="fas fa-share"></i>
+                            {{keep.shares}}&nbsp<i class="fas fa-eye"></i> {{keep.views}}
                         </p>
                         <div v-if="isLoggedIn">
-                            <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)" data-toggle="dropdown"
-                                id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false"
-                                title="Keep"><b>K</b></button>
+                            <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)"
+                                data-toggle="dropdown" id="dropdownKeepButton" aria-haspopup="true"
+                                aria-expanded="false" title="Keep"><b>K</b></button>
                             <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownButton">
-                                <p class="m-0 pl-2" v-for="vault in vaults">{{vault.name}}</p>
+                                <p class="m-0 pl-2" @click="addVaultKeep(keep)" v-for="vault in vaults">{{vault.name}}</p>
                             </div>
-                            <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)" data-toggle="dropdown"
-                                id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
-                                    class="fas fa-share"></i></button>
+                            <button class="btn btn-warning m-1 shadow dropdown-toggle" @click="addKeepShare(keep)"
+                                data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true"
+                                aria-expanded="false" title="Share"><i class="fas fa-share"></i></button>
                             <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownButton">
                                 <p>Facebook</p>
                                 <p>Twitter</p>
@@ -69,7 +69,18 @@
             this.$store.dispatch('getVaults')
         },
         data() {
-            return {}
+            return {
+                newVaultKeep: {
+                    name: "",
+                    description: "",
+                    img: "",
+                    isPrivate: true,
+                    userId: "",
+                    keeps: 0,
+                    shares: 0,
+                    views: 0
+                }
+            }
         },
         computed: {
             keeps() {
@@ -95,7 +106,7 @@
                 keep.views++;
                 this.$store.dispatch('addKeepView', keep)
             },
-            addVaultKeep(keep){
+            addVaultKeep(keep) {
                 keep.keeps++;
                 this.$store.dispatch('addVaultKeep', keep)
             }

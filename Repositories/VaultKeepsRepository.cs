@@ -15,7 +15,7 @@ namespace keepr.Repositories
         }
         public List<VaultKeep> GetAll()
         {
-            return _db.Query<VaultKeep>("SELECT * FROM vaultkeeps").AsList();
+            return _db.Query<VaultKeep>("SELECT * FROM vaultKeeps").AsList();
         }
 
         public VaultKeep GetById(int id)
@@ -24,13 +24,15 @@ namespace keepr.Repositories
             SELECT * FROM  WHERE id = @id", new { id });
         }
 
-        public VaultKeep CreateKeep(VaultKeep vaultKeep)
+        public VaultKeep CreateVaultKeep(VaultKeep vaultKeep)
         {
             try
             {
                 int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO  (name) VALUES (@name);
-                SELECT LAST_INSERT_ID()", vaultKeep);
+                    INSERT INTO vaultKeeps (id, name, description, img, userId, isPrivate, views, shares, keeps)
+                    VALUES (@Id, @Name, @Description, @Img, @UserId, @IsPrivate, @Views, @Shares, @Keeps);
+                    SELECT LAST_INSERT_ID()
+                ", vaultKeep);
                 vaultKeep.Id = id;
                 return vaultKeep;
             }

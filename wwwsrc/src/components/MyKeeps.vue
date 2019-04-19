@@ -11,19 +11,24 @@
                         <p class="card-text"><b>K</b> {{keep.keeps}} <i class="fas fa-share"></i> {{keep.shares}}&nbsp<i
                                 class="fas fa-eye"></i> {{keep.views}}
                         </p>
-                        <button class="btn btn-danger m-1 shadow dropdown-toggle" @click="addKeepCount(keep)"
-                            data-toggle="dropdown" id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false"
-                            title="Keep">
-                            <b>K</b></button>
-                        <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
-                            <p class="menu-option m-0 pl-2" @click="addKeepCount(keep)" v-for="vault in vaults">{{vault.name}}</p>
+                        <div>
+                            <button class="btn btn-danger m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                                id="dropdownKeepButton" aria-haspopup="true" aria-expanded="false" title="Keep">
+                                <b>K</b></button>
+                            <div class="dropdown-menu keep-menu shadow" aria-labelledby="dropdownKeepButton">
+                                <p class="menu-option m-0 pl-2" @click="addKeepCount(keep)" v-for="vault in vaults">
+                                    {{vault.name}}</p>
+                            </div>
                         </div>
-                        <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown" id="dropdownShareButton" aria-haspopup="true" aria-expanded="false"
-                            title="Share"><i class="fas fa-share"></i></button>
-                        <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
-                            <p @click="addKeepShare(keep)" href="http://www.facebook.com">Facebook</p>
-                            <p @click="addKeepShare(keep)" href="http://www.twitter.com">Twitter</p>
-                            <p @click="addKeepShare(keep)" href="http://www.instagram.com">Instagram</p>
+                        <div>
+                            <button class="btn btn-warning m-1 shadow dropdown-toggle" data-toggle="dropdown"
+                                id="dropdownShareButton" aria-haspopup="true" aria-expanded="false" title="Share"><i
+                                    class="fas fa-share"></i></button>
+                            <div class="dropdown-menu share-menu shadow" aria-labelledby="dropdownShareButton">
+                                <a @click="addKeepShare(keep)" href="http://www.facebook.com" target="_blank">Facebook</a><br>
+                                <a @click="addKeepShare(keep)" href="http://www.twitter.com" target="_blank">Twitter</a><br>
+                                <a @click="addKeepShare(keep)" href="http://www.instagram.com" target="_blank">Instagram</a>
+                            </div>
                         </div>
                         <button class="btn btn-primary m-1 shadow" @click="addKeepView(keep)" data-toggle="modal"
                             :data-target="'#keep-details-'+keep.id" title="View"><i class="fas fa-eye"></i></button>
@@ -124,19 +129,22 @@
         height: auto;
         border-radius: 10px;
     }
+
     .keep-menu {
         padding: 5px;
         color: white;
         text-shadow: none;
         background-color: #bd2130;
     }
+
     .share-menu {
         padding: 5px;
         color: black;
         text-shadow: none;
         background-color: gold;
     }
-    .menu-option{
+
+    .menu-option {
         cursor: pointer;
     }
 </style>
